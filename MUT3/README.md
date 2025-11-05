@@ -48,12 +48,13 @@ These MUT3 files are :
 the MUT3 databases of vehicles, components and how MUT3 
 obtains data from the components.
 * The .mff files (Mitsubishi Flash Format?) files. These
-are actually Microsoft CABinet archive files encrypted
+are actually Microsoft cabinet archive files encrypted
 with this scheme. These contain the flash updates for
 the ECUs in the vehicle.
 
 ### decrypt-firmware
 
-This tool decrypts the flash update files contained in the
+This tool decrypts the binary files that are generated
+from the SREC formatted flash update files contained in the
 encrypted CAB file in the .mff file. It is a simple byte
 substitution cipher.
