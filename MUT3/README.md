@@ -7,7 +7,7 @@ Information here applies to MUT3 _Second Edition_ (MUT3 SE)
 ### Finding details of your vehicle
 
 All data is contained in XML files that are encrypted with
-the xor-swap scheme.
+the [xor-swap](decrypt-xor-swap) scheme.
 
 From a given VIN number, the VIN number lookup file to
 search is determined by consulting the ____.exdf file
@@ -35,7 +35,7 @@ In the .mff file, the flash files exist, as Motorola
 SREC format files.
 
 The binary these SREC files represent are encrypted (again)
-but this time with the "firmware" encryption type.
+but this time with the ["firmware" encryption](decrypt-firmware) type.
 
 ## Tools
 
