@@ -22,4 +22,9 @@ This seems to be the [Renesas 32186](https://www.renesas.com/en/document/mah/321
 
 ### [Tools for working with MUT3 files](MUT3)
 
-For decrypting and navigating around the data in the MUT3 software.
+For decrypting and navigating around the data in the MUT3-SE software.
+
+## Related works
+
+An excellent walkthrough of how the XML-based database of MUT3-SE works
+is [here](https://mohammad-ali.bandzar.com/categories/mut-iii-se-reverse-engineering/)
