@@ -98,7 +98,7 @@ would apply to an individual ECU unit, but I don't know how to determine which o
 The definitions seem to be how to operate the KWP2000/UDS service ISO 14230 diagnostic protocol to
 read, write and run routines on the unit, via the can PIDs that are defined for each.
 
-[This](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://andrewrevill.co.uk/ReferenceLibrary/OBDII%2520Specifications%2520-%2520KWP2000%2520DaimlerChrysler%25202002.pdf)
+[This](https://andrewrevill.co.uk/ReferenceLibrary/OBDII%2520Specifications%2520-%2520KWP2000%2520DaimlerChrysler%25202002.pdf)
 seems to be a good reference for the protocol.
 
 An excerpt from the output against `ETACS_83040300.xml`...
