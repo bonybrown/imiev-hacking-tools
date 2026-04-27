@@ -182,6 +182,7 @@ It provides details of what software part numbers
 in which hardware part numbers have updates, and to
 which software part number it can be upgraded.
 
+
 For example:
 ```xml
     <mff>
@@ -198,6 +199,15 @@ For example:
       <referenceNo/>
     </mff>
 ```
+
+MUT3 only matches the target HWPN and SWPN values against the ECU/BMU unit
+and doesn't complain if the new HWPN and SWPN values are the same
+(ie, that the update does not change the part numbers at all).
+We can exploit that to re-flash the same "version" of the image repeatedly.
+
+MUT3 will also provide the user the option of choosing which update to apply
+when more than one update matches the current target.
+
 
 The `mffFileName` element will point to a .mff file.
 This file is a xor-swap encrypted "Microsoft cabinet" file.

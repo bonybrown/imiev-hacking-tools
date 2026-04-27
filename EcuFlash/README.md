@@ -9,7 +9,7 @@ need an XML definition file for your ecu image.
 In this repo are map files for:
 * [9499A18206 (EV-ECU 9499A182 software revision 06)](9499A18206.xml)
 
-Create an imiev folder in the {Program Files}/OpenECU/EcuFlash/rommetadata/mitsubishi folder and them there.
+Create an imiev folder in the `{Program Files}/OpenECU/EcuFlash/rommetadata/mitsubishi` folder and copy them there.
 
 You can then load the binary of the ECU dump into it and it will load the config and show you the maps defined in the file.
 
