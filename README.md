@@ -20,6 +20,10 @@ This seems to be the [Renesas 32186](https://www.renesas.com/en/document/mah/321
 
 ## What's in this repo
 
+### [Details of the EV-ECU](ev-ecu)
+
+Hardware and software details of the EV-ECU
+
 ### [Tools for working with MUT3 files](MUT3)
 
 For decrypting and navigating around the data in the MUT3-SE software.
@@ -51,6 +55,11 @@ from the `Ghidra` directory of your installation:
 $ support/sleigh -a Ghidra/Processors/m32r/data/languages/
 ```
 Then restart Ghidra entirely.
+
+### [Using an ELM327](ELM327.md)
+
+The magic incantation for getting an ELM-327 based CAN device
+to send and recieve CAN-TP (ISO 15765-2) messages to the ECU or BMU
 
 ## Related works
 

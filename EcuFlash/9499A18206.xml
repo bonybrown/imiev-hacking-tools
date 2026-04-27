@@ -1,0 +1,28 @@
+<rom>
+	<romid>
+		<xmlid>9499A18206</xmlid>
+		<internalidaddress>e526d</internalidaddress>
+		<internalidstring>9499A18206</internalidstring>
+		<make>Mitsubishi</make>
+		<market>JDM</market>
+		<model>iMiev</model>
+		<submodel>9499A18206</submodel>
+		<transmission>Auto</transmission>
+		<year>2008</year>
+		<flashmethod>mitsucan</flashmethod>
+		<memmodel>M32186F8</memmodel>
+		<checksummodule>mitsucan</checksummodule>
+	</romid>
+
+	<scaling name="Current" units="Amps" toexpr="x" frexpr="x" format="%.0f" min="-200" max="200" inc="1" storagetype="float" endian="big"/>
+	<scaling name="TempC" units="Celsius" toexpr="x" frexpr="x" format="%.0f" min="-40" max="215" inc="1" storagetype="float" endian="big"/>
+
+	<table name="Low Temp Charge Current Limit" category="Misc" address="e805c" type="2D" scaling="Current">
+		<table name="Battery Temperature" address="e781c" type="X Axis" elements="17" scaling="TempC"/>
+	</table>
+
+	<table name="High Temp Charge Current Limit" category="Misc" address="e8020" type="2D" scaling="Current">
+		<table name="Battery Temperature" address="e77e0" type="X Axis" elements="15" scaling="TempC"/>
+	</table>
+
+</rom>

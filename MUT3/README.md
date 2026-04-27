@@ -98,7 +98,7 @@ would apply to an individual ECU unit, but I don't know how to determine which o
 The definitions seem to be how to operate the KWP2000/UDS service ISO 14230 diagnostic protocol to
 read, write and run routines on the unit, via the can PIDs that are defined for each.
 
-[This](https://andrewrevill.co.uk/ReferenceLibrary/OBDII%2520Specifications%2520-%2520KWP2000%2520DaimlerChrysler%25202002.pdf)
+[This](https://andrewrevill.co.uk/ReferenceLibrary/OBDII%20Specifications%20-%20KWP2000%20DaimlerChrysler%202002.pdf)
 seems to be a good reference for the protocol.
 
 An excerpt from the output against `ETACS_83040300.xml`...
@@ -217,6 +217,8 @@ Once decrypted, it can be listed and extracted with the `7z` program.
 
 In the cabinet file, the flash files exist, as Motorola
 SREC format files.
+The files are created so that each
+block is aligned at 256 byte boundaries.
 
 An xml file exists that describes the other files:
 
@@ -266,6 +268,12 @@ The `SWIL` files are I believe "SoftWare Inter-Lock" files.
 They seems to contain the code to update the flash,
 split into two parts. `W635B_enc.mot` is the actual firmware.
 
+The `encryptCompressType` element specifies whether the data
+being uploaded to the ECU has been encrypted with a 
+[byte-substitution](decrypt-firmware)
+cipher. MUT3 does not decrypt this when uploading, it is done by the
+receiving code in the ECU. It will also accept code that has
+_not_ been encrypted by setting the value to `00`
 
 Use the `srec` suite to inspect the `.mot` files:
 
@@ -296,8 +304,9 @@ Note the entry for address `0x20 0000`. This is:
 * Not in the SFR or RAM areas
 * Only 2 bytes
 
-Which makes me believe it's a checksum, not part of the code at all,
-and is maybe only used as part of the upload process.
+It is a checksum that is used as part of the upload process.
+The value is the 16-bit sum of each 8-bit byte to be uploaded,
+ie, each data byte in the s-record file.
 
 That section can be omitted when converting to binary
 
@@ -409,16 +418,28 @@ CAN_3F-E_for_ALL.MMC_20110118.dbc;
 
 ### decrypt-xor-swap
 
-This tool decrypts files encrypted with the XOR and nibble swap scheme.
+This tool decrypts files encrypted with the XOR and nibble swap scheme. It will also encrypt files back again, using the `-r` command line switch.
 
 These MUT3 files are :
 * the .exdf files (Encrypted XML Data Files) that contain
 the MUT3 databases of vehicles, components and how MUT3 
 obtains data from the components.
+```mermaid
+graph LR
+    exdf -->|decrypt| xml
+    xml -->|encrypt| exdf
+```
 * The .mff files (Mitsubishi Flash Format?) files. These
 are actually Microsoft cabinet archive files encrypted
 with this scheme. These contain the flash updates for
 the ECUs in the vehicle.
+```mermaid
+graph LR
+    mff -->|decrypt| cab
+    cab -->|encrypt| mff
+```
+
+
 
 ### decrypt-firmware
 
