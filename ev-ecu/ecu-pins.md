@@ -8,6 +8,20 @@ Adapted from the content in the Mitsubishi Service Manual.
 
 ## Table 1 (Terminals 1–35) C-106
 
+| Terminal | Wiring Diagram Name | Type | Description | Active Condition | CPU Port (Pin)|
+| --- | --- | --- | --- | --- | --- |
+| 1 | BAT | Power In | Backup power supply input | +12V | Battery voltage | - |
+| 2 | CTL | Output (Digital) | ECU control power supply relay drive signal | +12V active  | P2.5 (43) |
+| 3 | IG1 | Input (Digital) | IG switch signal | +12V active | P10.0 (23) |
+| 4 | CH+B | Input (Digital) | Quick charging power supply signal | +12V when quick charging | P10.2 (25)|
+| 5 | - | - | - | - |
+| 6 | - | - | - | - |
+| 7 | VCSP | Power Out | Brake booster vacuum sensor power supply voltage | Electric motor switch: ON position  4.7 to 5.3 V | ? |
+| 8 | APP2 | Power Out | Accelerator pedal position sensor (sub) power supply voltage | Electric motor switch: ON position  4.9 to 5.1 V | ? |
+| 9 | IGCT | Power In | ECU control power supply input | Electric motor switch: ON position Battery voltage | ? |
+| 10 | IGCT_RET |Power GND | ECU power supply earth | 0V | GND |
+| 11 | CHGP | Input (Digital) | On board charging start signal | Electric motor switch: LOCK (OFF) position  Battery voltage | PX.Y (pin) |
+
 | Terminal No. | Type | Check item | Inspection conditions | Normal conditions |
 | --- | --- | --- | --- | --- |
 | 1 | Power In | Backup power supply input | Always | Battery voltage |
