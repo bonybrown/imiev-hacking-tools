@@ -343,7 +343,7 @@ def diag_system_info(vkey: str, diagDB_path: str) -> list:
                 mut_class_list = tree.find(f".//mut_class_list[@mid='{mid}']")
                 if mut_class_list is not None:
                     ecu_info = {}
-                    
+                    ecu_info["mut_class_mid"] = mid
                     # Get tx and rx can ids
                     tx_elem = mut_class_list.find('tx_can_id')
                     rx_elem = mut_class_list.find('rx_can_id')
