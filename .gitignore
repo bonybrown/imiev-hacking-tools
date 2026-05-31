@@ -1,2 +1,6 @@
 MUT3/decrypt-xor-swap/decrypt-xor-swap
 MUT3/decrypt-firmware/decrypt-map
+bin/
+dist/
+obj/
+*.csproj.lscache

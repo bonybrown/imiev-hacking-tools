@@ -2,6 +2,10 @@
 Tools and info for working with Mitsubishi i-MIEV
 ECU and BMU hardware/firmware and the MUT3 diagnostic software.
 
+> [!WARNING]
+> ### Disclaimer
+> This software is licensed under the [GNU General Public License v3.0](LICENSE). In accordance with **Sections 15 and 16** of the license, this program is provided "as is" without warranties of any kind. The author(s) assume zero liability for any damages, data loss, or system failures arising from its use.
+
 ## What's in this repo
 
 ### [Details of the EV-ECU](ev-ecu)
@@ -15,7 +19,23 @@ For decrypting and navigating around the data in the MUT3-SE software.
 ### [A tool for retrieving the code off the BMU or ECU](get-miev-dump)
 
 A tool that uses a J2534 adapter to fetch the code from the BMU or ECU
-of the iMiev. Windows 32-bit only (as J2534 drivers are needed).
+of the iMiev. 
+
+Windows 32-bit only (as J2534 drivers are needed).
+
+### [A tool for uploading new code to the ECU](upload-miev-firmware)
+
+A tool that uses a J2534 adapter to upload code to the ECU.
+Requires binary files that include the boot and ECU code for correct checksum calculation.
+
+Windows 32-bit only (as J2534 drivers are needed).
+
+### [A monitor tool for the ECU](memory-explorer)
+
+Presents a windows form where the memory of the ECU can be
+explored and KWP2000 diagnostic requests can be sent.
+
+Windows 32-bit only (as J2534 drivers are needed).
 
 ### [M32R-FP lanaguage spec for Ghidra](Ghidra)
 
