@@ -16,6 +16,13 @@ Features:
 > [!CAUTION]
 > This tool erases and reprograms ECU flash memory. A failed or interrupted upload may leave the ECU in reprogamming failsafe mode. Ensure stable power and a reliable connection before proceeding.
 
+> [!CAUTION]
+> The checksum calculation process used in the ECU/BMU includes the
+> bootloader section that is **NOT** reprogrammed in this process.
+> The bootloader section in the input file **MUST MATCH** the bootloader
+> already on the unit, otherwise the checksum adjustment will not be
+> correct and DTC 0605 (ROM Error) will be raised.
+
 ## Requirements
 
 - Windows (32-bit J2534 only)
@@ -107,7 +114,7 @@ upload-miev-firmware <path-to-firmware.bin>
 - The firmware file must contain valid magic bytes: `5A A5` at offset 0x8000 and `A5 5A` at offset 0xFFFFE.
 - Checksum target: the sum of all 32-bit big-endian values across the full 1 MB must equal 0x5AA55AA5.
 - Security Access KDF parameters: ECU uses multiplier 0xB1 / addend 0xCB14; BMU uses multiplier 0xE0 / addend 0x2AB6.
-- SWIL (Software In the Loop) loaders are embedded resources (`swil1.bin`, `swil2.bin`) uploaded before and after flash erase.
+- SWIL loaders are embedded resources (`swil1.bin`, `swil2.bin`) uploaded before and after flash erase.
 - KWP2000 services used:
   - StartDiagnosticSession (0x10)
   - ECUReset (0x11)
