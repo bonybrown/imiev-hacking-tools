@@ -1,4 +1,4 @@
-# get-miev-dump
+# download-miev-firmware
 
 Console app that uses `J2534-Sharp.Core` to communicate with Mitsubishi i-MiEV ECUs and BMUs via KWP2000 over CAN (ISO15765).
 
@@ -22,7 +22,7 @@ Features:
 
 ```
 Usage:
-  get-miev-dump [options]
+  download-miev-firmware [options]
 
 Options:
   --target <ecu|bmu>  Target module: ecu (0x751/0x752) or bmu (0x761/0x762) [default: ecu]
@@ -36,24 +36,26 @@ Options:
 
 ```powershell
 # Dump ECU memory (default target)
-get-miev-dump
+download-miev-firmware
 
 # Read BMU identification only
-get-miev-dump --target bmu --info
+download-miev-firmware --target bmu --info
 
 # Dump ECU memory with verbose frame logging
-get-miev-dump --debug
+download-miev-firmware --debug
 
 # Resume an interrupted BMU dump
-get-miev-dump --target bmu
+download-miev-firmware --target bmu
 ```
 
 ## Output Files
 
 - `{target}_identification.txt` — ECU/BMU identification data (e.g. `ecu_identification.txt`)
 - `{target}_dump.txt` — Memory dump output (e.g. `ecu_dump.txt`)
+- `{target}_firmware.bin` — Raw binary firmware image (e.g. `ecu_firmware.bin`)
 
 If a dump file already exists, the program reads the last address and resumes from where it left off.
+Once the dump completes, the text dump is automatically converted to a binary file.
 
 ## Build
 
@@ -73,18 +75,18 @@ Use the included publish profile and script:
 Output:
 
 - `dist\win-x86\` - self-contained single-file publish output
-- `dist\get-miev-dump-win-x86.zip` - zip ready to distribute
+- `dist\download-miev-firmware-win-x86.zip` - zip ready to distribute
 
 Equivalent manual command:
 
 ```powershell
-dotnet publish .\get-miev-dump.csproj -c Release /p:PublishProfile=WinX86SelfContained
+dotnet publish .\download-miev-firmware.csproj -c Release /p:PublishProfile=WinX86SelfContained
 ```
 
 ## Run
 
 ```powershell
-get-miev-dump
+download-miev-firmware
 ```
 
 ## Notes

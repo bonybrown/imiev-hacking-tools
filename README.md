@@ -16,7 +16,7 @@ Hardware and software details of the EV-ECU
 
 For decrypting and navigating around the data in the MUT3-SE software.
 
-### [A tool for retrieving the code off the BMU or ECU](get-miev-dump)
+### [A tool for retrieving the code off the BMU or ECU](download-miev-firmware)
 
 A tool that uses a J2534 adapter to fetch the code from the BMU or ECU
 of the iMiev. 

@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Logging;
 using SAE.J2534;
 using System.CommandLine;
 using System.Globalization;
@@ -43,8 +42,6 @@ static void Run(Target target, bool infoOnly, bool debug)
         Target.bmu => (new CanAddress(0x761), new CanAddress(0x762)),
         _ => (new CanAddress(0x751), new CanAddress(0x752)),
     };
-
-    var logger = new StdoutLogger(LogLevel.Trace);
 
     Console.WriteLine($"i-MiEV {target.ToString().ToUpper()} Reader (TX={canTx}, RX={canRx})");
     Console.WriteLine();
@@ -268,7 +265,31 @@ static void Run(Target target, bool infoOnly, bool debug)
         iterations++;
     }
 
+    Console.WriteLine();
     Console.WriteLine($"Dump complete. Written to {dumpFileName}");
+
+    ConvertDumpToBinary(dumpFileName, $"{target}_firmware.bin");
+}
+
+static void ConvertDumpToBinary(string dumpFileName, string binFileName)
+{
+    Console.WriteLine($"Converting {dumpFileName} to {binFileName}...");
+
+    using var output = File.Create(binFileName);
+    foreach (var line in File.ReadLines(dumpFileName))
+    {
+        var colonIndex = line.IndexOf(':');
+        if (colonIndex < 0) continue;
+
+        var hexData = line.AsSpan(colonIndex + 2); // skip ": "
+        var byteStrings = hexData.ToString().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        foreach (var byteStr in byteStrings)
+        {
+            output.WriteByte(byte.Parse(byteStr, NumberStyles.HexNumber, CultureInfo.InvariantCulture));
+        }
+    }
+
+    Console.WriteLine($"Binary file written: {binFileName} ({output.Length:N0} bytes)");
 }
 
 static int PromptForIndex(int apiCount)

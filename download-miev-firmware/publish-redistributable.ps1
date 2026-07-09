@@ -1,10 +1,10 @@
 $ErrorActionPreference = "Stop"
 
-$projectPath = Join-Path $PSScriptRoot "get-miev-dump.csproj"
+$projectPath = Join-Path $PSScriptRoot "download-miev-firmware.csproj"
 $publishProfile = "WinX86SelfContained"
 $distDir = Join-Path $PSScriptRoot "dist"
 $publishDir = Join-Path $distDir "win-x86"
-$zipPath = Join-Path $distDir "get-miev-dump-win-x86.zip"
+$zipPath = Join-Path $distDir "download-miev-firmware-win-x86.zip"
 
 if (Test-Path $publishDir)
 {
