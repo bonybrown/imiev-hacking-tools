@@ -33,8 +33,8 @@ This is marked `RN86` and seems to be a standard Microwire interface 16 bit x 1K
 Pinout and instruction set is identical to the 
 [Microschip 93C86](https://ww1.microchip.com/downloads/aemDocuments/documents/MPD/ProductDocuments/DataSheets/21132F.pdf) 
 
-This EEPROM holds stored DTCs, the brake pedal "learning" data and also seems to control some 
-kind of reprogramming limit counter. It is read and written to by bit-banging the pins of PORT 7.
+This EEPROM holds stored DTCs, the brake pedal "learning" data and power cycle
+counter. It is read and written to by bit-banging the pins of PORT 7.
 
 P70 - CS
 P71 - CLK
