@@ -5,8 +5,8 @@ using SAE.J2534;
 /// </summary>
 class EcuConnection : IDisposable
 {
-    readonly CanAddress _canTx = new(0x751);
-    readonly CanAddress _canRx = new(0x752);
+    CanAddress _canTx = new(0x751);
+    CanAddress _canRx = new(0x752);
 
     J2534API? _api;
     J2534Device? _device;
@@ -31,9 +31,12 @@ class EcuConnection : IDisposable
     /// Opens the J2534 device, ISO15765 channel, configures flow control filter,
     /// and enters diagnostic session 0x92.
     /// </summary>
-    public string Connect(string apiFileName)
+    public string Connect(string apiFileName, int canTxId = 0x751, int canRxId = 0x752)
     {
         Disconnect();
+
+        _canTx = new CanAddress(canTxId);
+        _canRx = new CanAddress(canRxId);
 
         var apiResult = J2534APIFactory.LoadAPI(apiFileName);
         if (!apiResult.IsSuccess)
@@ -62,8 +65,8 @@ class EcuConnection : IDisposable
         {
             FilterType = Filter.FLOW_CONTROL_FILTER,
             Mask = [0x00, 0x00, 0x07, 0xFF],
-            Pattern = [0x00, 0x00, 0x07, 0x52],
-            FlowControl = [0x00, 0x00, 0x07, 0x51],
+            Pattern = _canRx.Bytes,
+            FlowControl = _canTx.Bytes,
             TxFlags = TxFlag.NONE
         };
 

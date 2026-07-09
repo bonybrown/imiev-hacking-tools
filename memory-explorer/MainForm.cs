@@ -6,10 +6,12 @@ class MainForm : Form
 
     // Controls
     readonly ComboBox _adapterCombo;
+    readonly ComboBox _targetCombo;
     readonly Button _connectButton;
     readonly Label _statusLabel;
     readonly TextBox _addressBox;
     readonly Button _goButton;
+    readonly ComboBox _decodeCombo;
     readonly Panel _hexPanel;
     readonly VScrollBar _scrollBar;
     readonly System.Windows.Forms.Timer _pollTimer;
@@ -94,6 +96,26 @@ class MainForm : Form
             Margin = new Padding(0, 0, 4, 0)
         };
 
+        var targetLabel = new Label
+        {
+            Text = "Target:",
+            AutoSize = true,
+            Anchor = AnchorStyles.Left,
+            Margin = new Padding(8, 4, 4, 0)
+        };
+
+        _targetCombo = new ComboBox
+        {
+            DropDownStyle = ComboBoxStyle.DropDownList,
+            Width = 150,
+            Margin = new Padding(0, 0, 4, 0)
+        };
+        _targetCombo.Items.AddRange([
+            new TargetItem("ECU", 0x751, 0x752),
+            new TargetItem("BMU", 0x761, 0x762)
+        ]);
+        _targetCombo.SelectedIndex = 0;
+
         _connectButton = new Button
         {
             Text = "Connect",
@@ -111,7 +133,7 @@ class MainForm : Form
         };
         refreshButton.Click += (_, _) => RefreshAdapters();
 
-        adapterRow.Controls.AddRange([adapterLabel, _adapterCombo, _connectButton, refreshButton]);
+        adapterRow.Controls.AddRange([adapterLabel, _adapterCombo, targetLabel, _targetCombo, _connectButton, refreshButton]);
 
         // ── Row 1: status ──
         _statusLabel = new Label
@@ -168,7 +190,25 @@ class MainForm : Form
         };
         _continuousPollCheckbox.CheckedChanged += ContinuousPollCheckbox_Changed;
 
-        addressRow.Controls.AddRange([addressLabel, _addressBox, _goButton, _continuousPollCheckbox]);
+        var decodeLabel = new Label
+        {
+            Text = "Decode:",
+            AutoSize = true,
+            Anchor = AnchorStyles.Left,
+            Margin = new Padding(12, 4, 4, 0)
+        };
+
+        _decodeCombo = new ComboBox
+        {
+            DropDownStyle = ComboBoxStyle.DropDownList,
+            Width = 100,
+            Margin = new Padding(0, 0, 4, 0)
+        };
+        _decodeCombo.Items.AddRange(["None", "Float", "UInt16", "UInt8"]);
+        _decodeCombo.SelectedIndex = 0;
+        _decodeCombo.SelectedIndexChanged += (_, _) => _hexPanel.Invalidate();
+
+        addressRow.Controls.AddRange([addressLabel, _addressBox, _goButton, _continuousPollCheckbox, decodeLabel, _decodeCombo]);
 
         // ── Row 3: content area (hex panel + KWP command) ──
         var contentLayout = new TableLayoutPanel
@@ -384,6 +424,7 @@ class MainForm : Form
             _connectButton.Text = "Connect";
             _goButton.Enabled = false;
             _adapterCombo.Enabled = true;
+            _targetCombo.Enabled = true;
             return;
         }
 
@@ -397,7 +438,8 @@ class MainForm : Form
         _connectButton.Enabled = false;
         Application.DoEvents();
 
-        var error = _ecu.Connect(adapter.FileName);
+        var target = _targetCombo.SelectedItem as TargetItem ?? new TargetItem("ECU", 0x751, 0x752);
+        var error = _ecu.Connect(adapter.FileName, target.TxId, target.RxId);
         _connectButton.Enabled = true;
 
         if (!string.IsNullOrEmpty(error))
@@ -406,12 +448,13 @@ class MainForm : Form
             return;
         }
 
-        SetStatus("Connected — session 0x92 active", Color.Green);
+        SetStatus($"Connected to {target.Name} — session 0x92 active", Color.Green);
         _connectButton.Text = "Disconnect";
         _goButton.Enabled = true;
         _continuousPollCheckbox.Enabled = true;
         _kwpSendButton.Enabled = true;
         _adapterCombo.Enabled = false;
+        _targetCombo.Enabled = false;
         _pollTimer.Start();
 
         NavigateToVirtualOffset(0);
@@ -665,6 +708,8 @@ class MainForm : Form
             return;
         }
 
+        int decodeMode = _decodeCombo.SelectedIndex;
+
         for (int i = 0; i < _displayData.Length; i += BytesPerRow)
         {
             uint rowAddr = _currentAddress + (uint)i;
@@ -675,6 +720,48 @@ class MainForm : Form
             {
                 line += $"{_displayData[j]:X2}";
                 if (j < rowEnd - 1) line += " ";
+            }
+
+            if (decodeMode == 1) // Float
+            {
+                line += "  ";
+                for (int f = 0; f < BytesPerRow; f += 4)
+                {
+                    if (i + f + 4 <= _displayData.Length)
+                    {
+                        byte[] floatBytes = [
+                            _displayData[i + f + 3],
+                            _displayData[i + f + 2],
+                            _displayData[i + f + 1],
+                            _displayData[i + f]
+                        ];
+                        float val = BitConverter.ToSingle(floatBytes, 0);
+                        line += $"{val,10:F2}";
+                    }
+                }
+            }
+            else if (decodeMode == 2) // UInt16
+            {
+                line += "  ";
+                for (int f = 0; f < BytesPerRow; f += 2)
+                {
+                    if (i + f + 2 <= _displayData.Length)
+                    {
+                        ushort val = (ushort)((_displayData[i + f] << 8) | _displayData[i + f + 1]);
+                        line += $"{val,7}";
+                    }
+                }
+            }
+            else if (decodeMode == 3) // UInt8
+            {
+                line += "  ";
+                for (int f = 0; f < BytesPerRow; f++)
+                {
+                    if (i + f < _displayData.Length)
+                    {
+                        line += $"{_displayData[i + f],4}";
+                    }
+                }
             }
 
             g.DrawString(line, font, brush, x, y);
@@ -725,5 +812,10 @@ class MainForm : Form
     record KwpServiceItem(byte ServiceId, string Name)
     {
         public override string ToString() => $"0x{ServiceId:X2} {Name}";
+    }
+
+    record TargetItem(string Name, int TxId, int RxId)
+    {
+        public override string ToString() => $"{Name} (0x{TxId:X3}/0x{RxId:X3})";
     }
 }

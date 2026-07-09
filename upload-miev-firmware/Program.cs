@@ -1,4 +1,4 @@
-﻿using SAE.J2534;
+using SAE.J2534;
 using System.Buffers.Binary;
 using System.CommandLine;
 using System.Globalization;
@@ -12,19 +12,26 @@ var debugOption = new Option<bool>("--debug")
 {
     Description = "Enable verbose TX/RX frame logging"
 };
+var targetOption = new Option<string>("--target")
+{
+    Description = "Target module: ecu (0x751/0x752) or bmu (0x761/0x762)"
+};
+targetOption.AcceptOnlyFromAmong("ecu", "bmu");
 
 var rootCommand = new RootCommand("i-MiEV ECU firmware uploader")
 {
     fileArgument,
-    debugOption
+    debugOption,
+    targetOption
 };
 
 rootCommand.SetAction(parseResult =>
 {
     var file = parseResult.GetValue(fileArgument)!;
     var debug = parseResult.GetValue(debugOption);
+    var target = parseResult.GetValue(targetOption);
     try{
-        Run(file, debug);
+        Run(file, debug, target);
     }catch(Exception ex){
         Console.WriteLine($"Error: {ex.Message}");
         Environment.ExitCode = 1;
@@ -33,7 +40,7 @@ rootCommand.SetAction(parseResult =>
 
 return rootCommand.Parse(args).Invoke();
 
-static void Run(FileInfo firmwareFile, bool debug)
+static void Run(FileInfo firmwareFile, bool debug, string? target)
 {
     const uint FlashStart = 0x008000;
     const uint FlashEnd = 0x100000;
@@ -168,9 +175,15 @@ static void Run(FileInfo firmwareFile, bool debug)
     Console.WriteLine($"Total: {totalBytes:N0} bytes, Checksum: 0x{checksum:X4}");
     Console.WriteLine();
 
-    // --- 4. Select J2534 adapter ---
-    var canTx = new CanAddress(0x751);
-    var canRx = new CanAddress(0x752);
+    // --- 4. Select target module ---
+    target = ResolveTarget(target);
+    var (canTx, canRx) = target switch
+    {
+        "bmu" => (new CanAddress(0x761), new CanAddress(0x762)),
+        _ => (new CanAddress(0x751), new CanAddress(0x752))
+    };
+    Console.WriteLine($"Target: {target.ToUpperInvariant()} (TX: {canTx}, RX: {canRx})");
+    Console.WriteLine();
 
     var discoveredApis = J2534APIFactory.DiscoverAPIs().ToList();
     if (discoveredApis.Count == 0)
@@ -247,8 +260,8 @@ static void Run(FileInfo firmwareFile, bool debug)
     {
         FilterType = Filter.FLOW_CONTROL_FILTER,
         Mask = [0x00, 0x00, 0x07, 0xFF],
-        Pattern = [0x00, 0x00, 0x07, 0x52],
-        FlowControl = [0x00, 0x00, 0x07, 0x51],
+        Pattern = canRx.Bytes,
+        FlowControl = canTx.Bytes,
         TxFlags = TxFlag.NONE
     };
     channel.ClearMessageFilters();
@@ -344,7 +357,12 @@ static void Run(FileInfo firmwareFile, bool debug)
     Console.WriteLine($"Seed: {BitConverter.ToString(seed.ToArray())}");
 
     Console.Write("Sending key... ");
-    var key = SecurityAccess.ComputeKey(seed, 0x05);
+    var (kdfMul, kdfAdd) = target switch
+    {
+        "bmu" => ((ushort)0xE0, (ushort)0x2AB6),
+        _ => ((ushort)0xB1, (ushort)0xCB14)
+    };
+    var key = SecurityAccess.ComputeKey(seed, 0x05, kdfMul, kdfAdd);
     result = kwp.SecurityAccessSendKey(0x06, key);
     if (!result.Success) { Fail(12, result); return; }
     Console.WriteLine("OK");
@@ -543,5 +561,20 @@ static int PromptForIndex(int count)
             && idx >= 0 && idx < count)
             return idx;
         Console.WriteLine("Invalid selection.");
+    }
+}
+
+static string ResolveTarget(string? target)
+{
+    if (string.Equals(target, "ecu", StringComparison.OrdinalIgnoreCase)) return "ecu";
+    if (string.Equals(target, "bmu", StringComparison.OrdinalIgnoreCase)) return "bmu";
+
+    while (true)
+    {
+        Console.Write("Select target [ecu/bmu]: ");
+        var input = Console.ReadLine()?.Trim();
+        if (string.Equals(input, "ecu", StringComparison.OrdinalIgnoreCase)) return "ecu";
+        if (string.Equals(input, "bmu", StringComparison.OrdinalIgnoreCase)) return "bmu";
+        Console.WriteLine("Invalid selection. Enter 'ecu' or 'bmu'.");
     }
 }

@@ -36,16 +36,16 @@ Options:
 
 ```powershell
 # Dump ECU memory (default target)
-dotnet run
+get-miev-dump
 
 # Read BMU identification only
-dotnet run -- --target bmu --info
+get-miev-dump --target bmu --info
 
 # Dump ECU memory with verbose frame logging
-dotnet run -- --debug
+get-miev-dump --debug
 
 # Resume an interrupted BMU dump
-dotnet run -- --target bmu
+get-miev-dump --target bmu
 ```
 
 ## Output Files
@@ -84,7 +84,7 @@ dotnet publish .\get-miev-dump.csproj -c Release /p:PublishProfile=WinX86SelfCon
 ## Run
 
 ```powershell
-dotnet run
+get-miev-dump
 ```
 
 ## Notes
