@@ -16,24 +16,10 @@ Hardware and software details of the EV-ECU
 
 For decrypting and navigating around the data in the MUT3-SE software.
 
-### [A tool for retrieving the code off the BMU or ECU](download-miev-firmware)
+### [J2534 Tools for downloading/updloading the ECU/BMU firmware](Reprogram)
 
-A tool that uses a J2534 adapter to fetch the code from the BMU or ECU
-of the iMiev. 
-
-Windows 32-bit only (as J2534 drivers are needed).
-
-### [A tool for uploading new code to the ECU](upload-miev-firmware)
-
-A tool that uses a J2534 adapter to upload code to the ECU.
-Requires binary files that include the boot and ECU code for correct checksum calculation.
-
-Windows 32-bit only (as J2534 drivers are needed).
-
-### [A monitor tool for the ECU](memory-explorer)
-
-Presents a windows form where the memory of the ECU can be
-explored and KWP2000 diagnostic requests can be sent.
+Tools for downloading, uploading, and exploring ECU/BMU firmware via a J2534 adapter and KWP2000 over CAN.
+Includes a shared KWP2000 protocol library used by all three tools.
 
 Windows 32-bit only (as J2534 drivers are needed).
 

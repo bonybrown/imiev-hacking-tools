@@ -1,0 +1,8 @@
+ECU Identification for CAN ID 0x751 at 15/07/2026 3:07:31 PM
+ECUIdentification: [04][85][00][03][FF][00][06][60][6A][08]9499A182[20][20]
+OriginalVIN: FAILED - Negative response: NRC 0x12
+DiagnosticVariantCode: [D7][40][00][00]
+CurrentVIN: FAILED - Negative response: NRC 0x12
+ECUCodeFingerprint: [01][00][00][26][05]1[00][00][00][00]
+ECUCodeIdentification: [01][04][85][00][03][FF][60][6A][08]9499A18206
+BootCodeIdentification: [01][04][85][00][00][FF][01][00][00]9499A182[20][20]
