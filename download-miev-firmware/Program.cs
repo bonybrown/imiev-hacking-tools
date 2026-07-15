@@ -265,6 +265,7 @@ static void Run(Target target, bool infoOnly, bool debug)
         iterations++;
     }
 
+    dumpFile.Close();
     Console.WriteLine();
     Console.WriteLine($"Dump complete. Written to {dumpFileName}");
 

@@ -101,7 +101,7 @@ class Kwp2000(J2534Channel channel, CanAddress txCanId, CanAddress rxCanId)
     {
         if (timeoutMs < 0) timeoutMs = DefaultTimeoutMs;
 
-        const int PollIntervalMs = 100;
+        const int PollIntervalMs = 10;
         var resultBytes = new List<byte>();
         int elapsedMs = 0;
 

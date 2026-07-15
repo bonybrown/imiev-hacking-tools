@@ -153,7 +153,7 @@ class Kwp2000(J2534Channel channel, CanAddress txCanId, CanAddress rxCanId)
                 return Kwp2000Result.Error("Timeout waiting for response.");
             }
 
-            var readResult = channel.ReadMessages(10, PollIntervalMs);
+            var readResult = channel.ReadMessages(1, PollIntervalMs);
             elapsedMs += PollIntervalMs;
 
             if (!readResult.IsSuccess)
