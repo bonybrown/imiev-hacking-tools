@@ -62,16 +62,17 @@ upload-miev-firmware firmware.bin --target bmu --debug
 1. Validate firmware file (magic bytes, boot area, size).
 2. Compute checksum and inject adjustment value.
 3. Connect via J2534 and read ECU identification.
-4. Prompt for final confirmation (type `YES` to proceed).
-5. Enter diagnostic session 0x92, then programming session 0x85.
-6. Security Access (seed-to-key, level 0x05/0x06).
-7. Write programming date stamp.
-8. Upload SWIL1 + checksum, validate upload.
-9. **Erase flash** (~15 seconds) — point of no return.
-10. Upload SWIL2 + checksum, validate upload.
-11. Program all flash regions (256-byte chunks).
-12. Upload final checksum and finalize programming.
-13. Reset ECU and verify post-reset identification.
+4. Enter programming session and verify boot area (0x0000-0x7FFF) matches firmware file.
+5. Prompt for final confirmation (type `YES` to proceed).
+6. Enter diagnostic session 0x92, then programming session 0x85.
+7. Security Access (seed-to-key, level 0x05/0x06).
+8. Write programming date stamp.
+9. Upload SWIL1 + checksum, validate upload.
+10. **Erase flash** (~15 seconds) — point of no return.
+11. Upload SWIL2 + checksum, validate upload.
+12. Program all flash regions (256-byte chunks).
+13. Upload final checksum and finalize programming.
+14. Reset ECU and verify post-reset identification.
 
 ## Build
 
