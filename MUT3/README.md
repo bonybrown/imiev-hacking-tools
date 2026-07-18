@@ -91,9 +91,13 @@ The python program [ecu_function_translator.py](mut-metadata-extraction/ecu_func
 tool that will dump the definitions of the data that can be read and written, and the
 routines that can be performed with this unit.
 
-**NOTE:** there is some `skey` value that I don't know how to map to the ECU files, so this 
-tool dumps _all_ the definitions in the file. I'd guess that only one `skey` set
-would apply to an individual ECU unit, but I don't know how to determine which one.
+Each `skey` element in the file has a `diag_version` child that identifies which
+version of the ECU software it applies to. To find the correct value for a specific ECU,
+send a `ReadECUIdentification` request for `ECU Code Software Identification` (KWP2000 service `0x1A 9C`)
+and concatenate bytes 3 and 4 of the response. Pass that value with `--diag-version`
+to filter the output to only the matching `skey` elements.
+
+Without `--diag-version` the tool dumps all `skey` definitions in the file.
 
 The definitions seem to be how to operate the KWP2000/UDS service ISO 14230 diagnostic protocol to
 read, write and run routines on the unit, via the can PIDs that are defined for each.

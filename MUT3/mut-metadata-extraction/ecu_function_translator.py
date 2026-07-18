@@ -259,7 +259,7 @@ def load_range_names(diaglang_file, language='E'):
     return range_map
 
 
-def parse_ecu_file(ecu_file, function_map, item_map, unit_map, range_map):
+def parse_ecu_file(ecu_file, function_map, item_map, unit_map, range_map, diag_version=None):
     """
     Parse ECU diagnostic file and extract skey/function/item information.
     
@@ -269,6 +269,7 @@ def parse_ecu_file(ecu_file, function_map, item_map, unit_map, range_map):
         item_map: Dictionary mapping iid to item names
         unit_map: Dictionary mapping uid to unit names
         range_map: Dictionary mapping rid to range names
+        diag_version: If set, only include skey elements with this diag_version value
     
     Returns:
         list: List of tuples (sid, [(fid, function_name, [items]), ...])
@@ -289,8 +290,12 @@ def parse_ecu_file(ecu_file, function_map, item_map, unit_map, range_map):
     
     results = []
     
-    # Find all skey elements
-    for skey in root.findall('.//skey'):
+    # Find all skey elements, optionally filtered by diag_version
+    if diag_version is not None:
+        xpath = f'.//skey[diag_version = "{diag_version}"]'
+    else:
+        xpath = './/skey'
+    for skey in root.findall(xpath):
         sid = skey.get('sid')
         if sid is None:
             continue
@@ -666,6 +671,11 @@ Examples:
   %(prog)s --lang G MUT3_SE/DiagDB/Ecu/CMU09_DB000000.xml
   %(prog)s --format csv MUT3_SE/DiagDB/Ecu/CMU09_DB000000.xml
   %(prog)s --lang E --format csv MUT3_SE/DiagDB/Ecu/CMU09_DB000000.xml
+  %(prog)s --diag-version 0003 MUT3_SE/DiagDB/Ecu/CMU09_DB000000.xml
+
+The --diag-version value is determined by sending a ReadECUIdentification request
+for option 0x9C (KWP2000 service 0x1A 9C) and concatenating bytes 3 and 4 of the
+response.
         """)
     
     parser.add_argument('ecu_file', 
@@ -678,6 +688,10 @@ Examples:
                         default='tree',
                         choices=['tree', 'csv'],
                         help='Output format: tree or csv (default: tree)')
+    parser.add_argument('--diag-version',
+                        default=None,
+                        metavar='VERSION',
+                        help='Only include skey elements with this diag_version value (e.g. 0003)')
     parser.add_argument('--include-negative',
                         action='store_true',
                         help='Include items with negative qual_sid or qual_lid values (default: exclude them)')
@@ -724,7 +738,7 @@ Examples:
     print()
     
     # Parse ECU file
-    results = parse_ecu_file(ecu_file, function_map, item_map, unit_map, range_map)
+    results = parse_ecu_file(ecu_file, function_map, item_map, unit_map, range_map, args.diag_version)
     
     # Print results in requested format
     if output_format == 'csv':
