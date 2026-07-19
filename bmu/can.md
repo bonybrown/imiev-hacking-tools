@@ -1,4 +1,4 @@
-# 9499B133 (BMU) CAN
+# 9499B115 (BMU) CAN
 
 These tables are compiled from the BMU firmware.
 
@@ -7,7 +7,7 @@ These tables are compiled from the BMU firmware.
 ```mermaid
 flowchart LR
     car["Rest of car\n(ECU, ABS, ETACS,\nOBC, A/C ECU...)"]
-    bmu["**BMU**\n9499B133"]
+    bmu["**BMU**\n9499B115"]
     battery["Battery Pack\n(CMUs × 12)"]
 
     car <-->|"CAN 0\n(main vehicle bus)"| bmu
