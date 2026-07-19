@@ -736,7 +736,7 @@ class MainForm : Form
                             _displayData[i + f]
                         ];
                         float val = BitConverter.ToSingle(floatBytes, 0);
-                        line += $"{val,10:F2}";
+                        line += $"{val,10:F3}";
                     }
                 }
             }

@@ -306,6 +306,65 @@ static void Run(FileInfo firmwareFile, bool debug, string? target)
     }
     PrintIdentification("Code ID", codeResult.ResponsePayload!);
 
+    // --- 7b. Verify boot area matches firmware file ---
+    Console.WriteLine();
+    Console.WriteLine($"Verifying boot area (0x0000-0x7FFF) against input file (takes about 60 seconds)...");
+    Console.Write("Entering diagnostic session (0x92) ... ");
+    var progResult = kwp.StartDiagnosticSession(0x92, timeoutMs: 2000);
+    if (!progResult.Success) { Fail(8, progResult); return; }
+    Console.WriteLine("OK");
+    Thread.Sleep(500);
+    Console.Write("Entering session (0x85) to compare boot area ... ");
+    progResult = kwp.StartDiagnosticSession(0x85, timeoutMs: 2000);
+    if (!progResult.Success) { Fail(8, progResult); return; }
+    Console.WriteLine("OK");
+
+    const uint BootAreaEnd = 0x8000;
+    const byte ReadBlockSize = 255;
+
+    var bootAreaData = new byte[BootAreaEnd];
+    for (uint addr = 0; addr < BootAreaEnd; addr += ReadBlockSize)
+    {
+        byte blockSize = (byte)Math.Min(ReadBlockSize, BootAreaEnd - addr);
+        var readResult = kwp.ReadMemoryByAddress(addr, blockSize, timeoutMs: 2000);
+        if (!readResult.Success)
+        {
+            Console.WriteLine($"Failed to read memory at 0x{addr:X5}: {readResult.ErrorMessage}");
+            Environment.ExitCode = 8;
+            return;
+        }
+
+        var payload = readResult.ResponsePayload!;
+        var data = payload.AsSpan(1); // skip service echo (0x63)
+        if (data.Length != blockSize)
+        {
+            Console.WriteLine($"Unexpected response length at 0x{addr:X5}: expected {blockSize}, got {data.Length}");
+            Environment.ExitCode = 8;
+            return;
+        }
+        data.CopyTo(bootAreaData.AsSpan((int)addr));
+
+        Console.Write(".");
+    }
+    Console.WriteLine();
+
+    if (!bootAreaData.AsSpan().SequenceEqual(firmware.AsSpan(0, (int)BootAreaEnd)))
+    {
+        int mismatchOffset = 0;
+        for (int i = 0; i < bootAreaData.Length; i++)
+        {
+            if (bootAreaData[i] != firmware[i]) { mismatchOffset = i; break; }
+        }
+        Console.WriteLine($"ERROR: Boot area mismatch! First difference at offset 0x{mismatchOffset:X4}");
+        Console.WriteLine($"  ECU:  0x{bootAreaData[mismatchOffset]:X2}");
+        Console.WriteLine($"  File: 0x{firmware[mismatchOffset]:X2}");
+        Console.WriteLine("The boot area in the firmware file does not match the ECU.");
+        Console.WriteLine("Programming with a mismatched boot area will result in an incorrect checksum.");
+        Environment.ExitCode = 8;
+        return;
+    }
+    Console.WriteLine("Boot area verified OK.");
+
     // --- 8. Final confirmation ---
     Console.WriteLine();
     Console.WriteLine("╔══════════════════════════════════════╗");
