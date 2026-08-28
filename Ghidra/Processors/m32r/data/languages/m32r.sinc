@@ -122,9 +122,10 @@ REL24:		reloc				is	pcdisp24 [ reloc = (inst_start & 0xFFFFFFFC) + (pcdisp24 << 
 }
 
 :ADDX	Rdest, Rsrc			 is op1=0 & Rdest; op3=9 & Rsrc {
+	local cin = zext($(C));
 	local tmp = Rdest + Rsrc;
-	local tmp2 = tmp + zext($(C));
-	$(C) = carry(Rdest, Rsrc) || carry(tmp, tmp2);
+	local tmp2 = tmp + cin;
+	$(C) = carry(Rdest, Rsrc) || carry(tmp, cin);
 	Rdest = tmp2;
 
 }
@@ -590,12 +591,11 @@ REL24:		reloc				is	pcdisp24 [ reloc = (inst_start & 0xFFFFFFFC) + (pcdisp24 << 
 	Rdest = Rdest - Rsrc;
 }
 
-:SUBX	Rdest, Rsrc	 is op1=0 & Rdest; op3=1 & Rsrc { #fix
-	# This is incorrect and needs to have C flag added for borrow
-	Rdest = Rdest - Rsrc;
-	#$(C_flag) = sborrow(Rdest, Rsrc);
-	$(C) = sborrow(Rdest, Rsrc);
-	CBR = zext(sborrow(Rdest, Rsrc));
+:SUBX	Rdest, Rsrc	 is op1=0 & Rdest; op3=1 & Rsrc {
+	local bin = zext($(C));
+	local t = Rdest - Rsrc;
+	$(C) = (Rdest < Rsrc) || (t < bin);
+	Rdest = t - bin;
 }
 
 :TRAP	"#"op4				 is op12=0x10; op3=15 & op4 {
