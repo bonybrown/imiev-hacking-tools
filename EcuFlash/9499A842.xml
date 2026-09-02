@@ -1,12 +1,12 @@
 <rom>
 	<romid>
-		<xmlid>9499B115</xmlid>
+		<xmlid>393439393031000041383432</xmlid>
 		<internalidaddress>e53e4</internalidaddress>
-		<internalidhex>393439393030000042313135</internalidhex>
+		<internalidhex>393439393031000041383432</internalidhex>
 		<make>Mitsubishi</make>
-		<market>JDM</market>
+		<market>EDM</market>
 		<model>iMiev BMU</model>
-		<submodel>9499B115</submodel>
+		<submodel>9499A842</submodel>
 		<transmission>Auto</transmission>
 		<year>2012</year>
 		<flashmethod>mitsucan</flashmethod>
@@ -67,86 +67,7 @@
 	<table name="Pack Current Low from Current Sensor ADC" category="Sensors" address="e4b48" type="2D" elements="7" scaling="PackAmps">
 		<table name="Current Sensor ADC Input" address="e48a0" type="X Axis" elements="7" scaling="AdcVolts"/>
 	</table>
-<!--
-	Unsure what these do yet, so leaving them commentted out for now.
 
-	<table name="TABLE_OUT_ALL_120" category="Unknown" address="e4968" type="2D" elements="11" scaling="Generic_float">
-		<table name="Input" type="Static X Axis" elements="11" scaling="Generic_float">
-			<data>0</data>
-			<data>10</data>
-			<data>20</data>
-			<data>30</data>
-			<data>40</data>
-			<data>50</data>
-			<data>60</data>
-			<data>70</data>
-			<data>80</data>
-			<data>90</data>
-			<data>100</data>
-		</table>
-	</table>
-
-	<table name="TABLE_OUT_-5_to_5_FROM_-20_to_20_FROM_TEMP?" category="Unknown" address="e499f" type="2D" elements="41" scaling="Generic_int8">
-		<table name="Temperature Input" type="Static X Axis" elements="41" scaling="TempC">
-			<data>-20</data>
-			<data>-19</data>
-			<data>-18</data>
-			<data>-17</data>
-			<data>-16</data>
-			<data>-15</data>
-			<data>-14</data>
-			<data>-13</data>
-			<data>-12</data>
-			<data>-11</data>
-			<data>-10</data>
-			<data>-9</data>
-			<data>-8</data>
-			<data>-7</data>
-			<data>-6</data>
-			<data>-5</data>
-			<data>-4</data>
-			<data>-3</data>
-			<data>-2</data>
-			<data>-1</data>
-			<data>0</data>
-			<data>1</data>
-			<data>2</data>
-			<data>3</data>
-			<data>4</data>
-			<data>5</data>
-			<data>6</data>
-			<data>7</data>
-			<data>8</data>
-			<data>9</data>
-			<data>10</data>
-			<data>11</data>
-			<data>12</data>
-			<data>13</data>
-			<data>14</data>
-			<data>15</data>
-			<data>16</data>
-			<data>17</data>
-			<data>18</data>
-			<data>19</data>
-			<data>20</data>
-		</table>
-	</table>
-
-	<table name="TABLE_OUT_UNK_FROM_MIN_TEMPERATURE" category="Unknown" address="e4acc" type="2D" elements="10" scaling="Generic_float">
-		<table name="Temperature Input" type="Static X Axis" elements="10" scaling="TempC">
-			<data>-30</data>
-			<data>-20</data>
-			<data>-10</data>
-			<data>0</data>
-			<data>10</data>
-			<data>20</data>
-			<data>30</data>
-			<data>40</data>
-			<data>50</data>
-			<data>60</data>
-		</table>
-	</table>
--->
 	<table name="SOC/Temperature Charge Limit" category="Battery" address="e4c3c" type="3D" elements="11" scaling="PackAmps_x10">
 		<table name="SOC Input" type="Static X Axis" elements="11" scaling="SOC">
 			<data>0</data>
