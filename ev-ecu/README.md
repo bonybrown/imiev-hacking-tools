@@ -2,7 +2,36 @@
 
 ## General Arrangement
 
-(diagram of Main CPU, Secondary CPU, EEPROM, CAN interfaces x 2 and general IO device descriptions. Show reset circuit from connector)
+```mermaid
+flowchart LR
+  MainBus[Other Main CAN Bus Units]
+  ChademoBus[ChaDeMo Charger CAN]
+  BMU[Battery Management Unit BMU]
+
+  subgraph EVECU[EV-ECU Module]
+    MainCPU[Main CPU IC1 M8106 / Renesas 32186]
+    SecCPU[Secondary CPU IC2]
+    EEPROM[EEPROM IC3 RN86 / 93C86-compatible]
+    IO[General I/O Sensors, Actuators, Logic Inputs]
+    CAN1[CAN Interface 1 Main CAN Bus]
+    CAN2[CAN Interface 2 ChaDeMo CAN Bus]
+    Rst[Reset Circuit]
+  end
+
+  Rst -->|Main reset| MainCPU
+  Rst -->|Secondary reset| SecCPU
+
+  MainCPU <-->|SPI-like link| SecCPU
+  MainCPU <-->|Microwire bit-bang| EEPROM
+
+  MainCPU <-->|Digital / Analog I/O| IO
+  MainCPU <-->|CAN controller A| CAN1
+  MainCPU <-->|CAN controller B| CAN2
+
+  CAN1 -->|Main CAN bus| BMU
+  CAN1 -->|Main CAN bus| MainBus
+  CAN2 -->|Fast-charge comms| ChademoBus
+```
 
 ## Main CPU (IC1)
 
@@ -14,7 +43,7 @@ This seems to be the [Renesas 32186](https://www.renesas.com/en/document/mah/321
 * Single precision floating point unit
 * 1024kB of Flash (`0x00 0000` to `0x0f ffff`)
 * Special function registers (`0x80 0000` to `0x80 3fff`)
-  * Not all this are is used. The last peripheral register is at `0x80 204e` 
+  * Not all this area is used. The last peripheral register is at `0x80 204e` 
 * 64kB of RAM (`0x80 4000` to `0x81 3fff`)
 * 80MHz operation
 * 2 x CAN bus peripherals
@@ -37,18 +66,36 @@ This EEPROM holds stored DTCs, the brake pedal "learning" data and power cycle
 counter. It is read and written to by bit-banging the pins of PORT 7.
 
 P70 - CS
+
 P71 - CLK
+
 P72 - DI
+
 P73 - DO
 
 It can be read while on the board by holding the main and secondary CPUs in reset state, which
 keeps their pins in a high-impedence state.
 
-### ECU Unit IO
+## CAN Interfaces
+
+The EV-ECU bridges two CAN domains:
+* Main vehicle CAN bus (`CAN Interface 1`)
+* ChaDeMo charger CAN bus (`CAN Interface 2`)
+
+This includes normal vehicle coordination on the main bus and fast-charge
+communications on the ChaDeMo bus.
+
+See current EV-ECU CAN notes here:
+[EV-ECU CAN notes](can.md)
+
+## ECU Unit IO
 
 [Table of ECU pins](ecu-pins.md)
 
-### ECU Identification data
+## ECU Identification data
+
+Known EV-ECU software versions and release markers are tracked in:
+[EV-ECU version timeline](ECU_VERSION_TIMELINE.md)
 
 #### Service $1a $87 ECU Identification
 

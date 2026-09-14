@@ -394,7 +394,6 @@ def parse_ecu_file(ecu_file, function_map, item_map, unit_map, range_map, diag_v
                 if fid is not None:
                     # Look up the function name
                     func_name = function_map.get(fid, f"[Unknown Function ID: {fid}]")
-                    
                     # Parse items from groups
                     items = []
                     for group in function.findall('group'):
@@ -406,9 +405,10 @@ def parse_ecu_file(ecu_file, function_map, item_map, unit_map, range_map, diag_v
                             item_lang_id_elem = item_list.find('item_lang_id')
                             if item_lang_id_elem is not None and item_lang_id_elem.text:
                                 item_lang_id = item_lang_id_elem.text
+                                if item_lang_id == '0':
+                                    continue
                                 # Look up the item name
                                 item_name = item_map.get(item_lang_id, f"[Unknown Item ID: {item_lang_id}]")
-                                
                                 # Look up qual_id information
                                 qual_id_elem = item_list.find('qual_id')
                                 qual_sid = ""
@@ -420,7 +420,7 @@ def parse_ecu_file(ecu_file, function_map, item_map, unit_map, range_map, diag_v
                                         qual_sid, qual_lid, param_lists = qual_id_map[qual_id_value]
                                 
                                 items.append((item_no, item_lang_id, item_name, qual_sid, qual_lid, param_lists))
-                    
+
                     functions.append((fid, func_name, items))
         
         results.append((sid, functions))
@@ -459,12 +459,13 @@ def print_results(results, ecu_file, include_negative=False):
                         item_no, item_lang_id, item_name, qual_sid, qual_lid, param_lists = item_data
                         
                         # Filter out items with negative qual_sid or qual_lid if requested
-                        if not include_negative:
-                            try:
-                                if (qual_sid and int(qual_sid) < 0) or (qual_lid and int(qual_lid) < 0):
-                                    continue
-                            except (ValueError, TypeError):
-                                pass
+                        # if not include_negative:
+                        #     try:
+                        #         if (qual_sid and int(qual_sid) < 0) or (qual_lid and int(qual_lid) < 0):
+                        #             continue
+                        #     except (ValueError, TypeError):
+                        #         pass
+                        
                         
                         qual_key = (qual_sid, qual_lid)
                         if qual_key not in qual_groups:

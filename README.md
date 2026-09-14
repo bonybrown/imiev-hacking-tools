@@ -12,6 +12,10 @@ ECU and BMU hardware/firmware and the MUT3 diagnostic software.
 
 Hardware and software details of the EV-ECU
 
+### [Details of the BMU](bmu)
+
+Hardware and software details of the BMU
+
 ### [Tools for working with MUT3 files](MUT3)
 
 For decrypting and navigating around the data in the MUT3-SE software.
