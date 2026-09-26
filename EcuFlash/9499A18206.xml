@@ -9,9 +9,7 @@
 		<submodel>9499A18206</submodel>
 		<transmission>Auto</transmission>
 		<year>2008</year>
-		<flashmethod>mitsucan</flashmethod>
 		<memmodel>M32186F8</memmodel>
-		<checksummodule>mitsucan</checksummodule>
 	</romid>
 
 	<scaling name="Current" units="Amps" toexpr="x" frexpr="x" format="%.0f" min="-200" max="200" inc="1" storagetype="float" endian="big"/>

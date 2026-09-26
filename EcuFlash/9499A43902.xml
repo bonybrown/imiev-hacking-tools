@@ -9,9 +9,7 @@
 		<submodel>9499A43902</submodel>
 		<transmission>Auto</transmission>
 		<year>2008</year>
-		<flashmethod>mitsucan</flashmethod>
 		<memmodel>M32186F8</memmodel>
-		<checksummodule>mitsucan</checksummodule>
 	</romid>
 
 	<scaling name="AmpHours_float_x10" units="Ah" toexpr="x/10" frexpr="x*10" format="%.1f" min="0" max="655.3" inc="0.1" storagetype="uint16" endian="big"/>

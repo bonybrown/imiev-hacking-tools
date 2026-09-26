@@ -9,9 +9,7 @@
 		<submodel>9499B115</submodel>
 		<transmission>Auto</transmission>
 		<year>2012</year>
-		<flashmethod>mitsucan</flashmethod>
 		<memmodel>M32186F8</memmodel>
-		<checksummodule>mitsucan</checksummodule>
 	</romid>
 
 	<scaling name="AdcVolts" units="V" toexpr="x" frexpr="x" format="%.4f" min="0" max="5" inc="0.0001" storagetype="float" endian="big"/>

@@ -8,6 +8,7 @@ need an appropriate XML definition file for each.
 
 In this repo are map files for:
 * [9499A18206 (EV-ECU 9499A182 software revision 06)](9499A18206.xml)
+* [9499A43902 (EV-ECU 9499A439 software revision 02)](9499A43902.xml)
 * [9499B115 (BMU 9499B155 initial revision)](9499B155.xml)
 * [9499A842 (BMU 9499B842 initial revision)](9499A842.xml)
 
