@@ -9,6 +9,7 @@
 | May 31 2011 | 9499A84201 | `3.02 (20-Oct-2010)` | The code in this is identical to 9499B11500, only the identifiers have changed. |
 | Mar 9 2016 | 9479A14100 | `3.11 (19-Nov-2015)` |  From a 2017 EU C-Zero |
 | Jul 10 2014 | 9479A04300 | `8.21 (07-Jul-2014)` | From a late-model BMU embedded in battery pack, not under the rear seat; contains onboard earth leakage test hardware. |
+| Mar 9 2016 | 9479A14100 | `3.11 (19-Nov-2015)` |  From a 2017 EU C-Zero, 80 cell model |
 
 ## Component Matrix
 
@@ -60,7 +61,7 @@ Use this process to regenerate this markdown file from the BMU folders.
 
 1. Enumerate each BMU subfolder and identify exactly one firmware `.bin` file plus `bmu_identification.txt`.
 2. Run `strings -n 8` against the chosen firmware binary in each BMU folder and save the result as `strings.txt` in that same folder.
-3. Read `strings.txt` and locate the single standalone date line in `MMM DD YYYY` format that is immediately followed by a standalone `HH:MM:SS` line.
+3. Run `strings -n 16 -tx $i | grep -E -i ' (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)'` to locate the headline date/time of the firmware build.
 4. Use that date line as the canonical timeline date for the folder.
 5. Read `bmu_identification.txt` and extract the software part number from `ECUCodeIdentification`.
 6. Read each BMU folder's `notes.txt` and map the content to that folder's software part number.
