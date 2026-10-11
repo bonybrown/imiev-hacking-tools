@@ -5,40 +5,43 @@
 | Timeline date | Software Part No | Primary firmware marker(s) | Notes |
 |---|---|---|---|
 | Dec 13 2010 | 9499B131 | `MAB_MMC_3F45E_EV_9.05a` |  |
-| May 12 2014 | 9499A43902 | `MAB_MMC_3F45E_EV_8.16a` | From a Citroen C-Zero 2011. Also verfied from a Mitsubishi |
+| May 12 2014 | 9499A43902 | `MAB_MMC_3F45E_EV_8.16a` | From a Citroen C-Zero 2011 |
 | May 27 2014 | 9499A18204 | `6.09a (20-May-2014)` |  |
 | May 27 2014 | 9499B13102 | `MAB_MMC_3F45E_EV_9.50a` (with `9.05.0018:20:01` also present) | An update to 9499B131 |
 | Oct 14 2015 | 9499A18206 | `6.09a (20-May-2014)` (same branch marker as A18204) | An update to 9499A108204 |
+| Jun 17 2016 | 9486A069 | `MAB_MMC_3F45E_EV_11.21` | From a Citroen C-Zero 2017 |
 
 
 ## Component Matrix
 
 Using the initial consecutive 4-line component block in each ECU `strings.txt`, this matrix shows the component version string and component date at each component/ECU intersection.
 
-| Component | 9499B131 | 9499A43902 | 9499A18204 | 9499B13102 | 9499A18206 |
-|---|---|---|---|---|---|
-| `std_s(GAIO)` | `V02.08`<br>`Nov 10 2009` | `V02.08`<br>`Nov 10 2009` | `xassv_LNG`<br>`Aug 2 2007` | `V02.08`<br>`Nov 10 2009` | `xassv_LNG`<br>`Aug 2 2007` |
-| `math_s(GAIO)` | `V02.08`<br>`Nov 10 2009` | `V02.08`<br>`Nov 10 2009` | `xassv_LNG`<br>`Aug 2 2007` | `V02.08`<br>`Nov 10 2009` | `xassv_LNG`<br>`Aug 2 2007` |
-| `cs(GAIO)` | `V01.01`<br>`Nov 10 2009` | `V01.01`<br>`Nov 10 2009` | `xassv_LNG`<br>`Aug 2 2007` | `V01.01`<br>`Nov 10 2009` | `xassv_LNG`<br>`Aug 2 2007` |
-| `ert(MATLAB)` | `2007a/7.4.0.287`<br>`Apr 15 2010` | `2007a/7.4.0.287`<br>`Apr 15 2010` |  | `2007a/7.4.0.287`<br>`Apr 15 2010` |  |
-| `Can Reproggram` | `00.06.00`<br>`2009/02/10(Tue)` | `00.06.00`<br>`2009/02/10(Tue)` | `00.06.00.00`<br>`2009/02/10(Tue)` | `00.06.00`<br>`2009/02/10(Tue)` | `00.06.00.00`<br>`2009/02/10(Tue)` |
-| `BOOT` | `00.07.07`<br>`2009/08/03(Mon)` | `00.07.07`<br>`2009/08/03(Mon)` | `1.31`<br>`May 22 2014` | `00.07.07`<br>`2009/08/03(Mon)` | `1.31`<br>`May 22 2014` |
-| `BACKUP RAM` | `00.07.07`<br>`2009/08/03(Mon)` | `00.07.07`<br>`2009/08/03(Mon)` | `00.05.00`<br>`2009/01/08(Thu)` | `00.07.07`<br>`2009/08/03(Mon)` | `00.05.00`<br>`2009/01/08(Thu)` |
-| `EEPROM` | `00.08.11`<br>`2010/10/12(Tue)` | `00.08.11`<br>`2010/10/12(Tue)` | `5.03`<br>`2009/01/31(Sat)` | `00.08.11`<br>`2010/10/12(Tue)` | `5.03`<br>`2009/01/31(Sat)` |
-| `TASK ciNAFWH` | `00.01.30`<br>`2009/05/20(Wed)` | `00.01.30`<br>`2009/05/20(Wed)` | `1.30`<br>`May 22 2014` | `00.01.30`<br>`2009/05/20(Wed)` | `1.30`<br>`May 22 2014` |
-| `PORT` | `00.05.01`<br>`2009/01/29(Thu)` | `00.05.01`<br>`2009/01/29(Thu)` | `00.05.01`<br>`2009/01/29(Thu)` | `00.05.01`<br>`2009/01/29(Thu)` | `00.05.01`<br>`2009/01/29(Thu)` |
-| `RAM MONITOR` | `00.01.03`<br>`2008/12/04(Thu)` | `00.01.03`<br>`2008/12/04(Thu)` | `1.03`<br>`2008/12/04(Thu)` | `00.01.03`<br>`2008/12/04(Thu)` | `1.03`<br>`2008/12/04(Thu)` |
-| `Watch CPU` | `00.07.06`<br>`2009/07/07(Tue)` | `00.07.06`<br>`2009/07/07(Tue)` | `5.04`<br>`2009/02/02(Mon)` | `00.07.06`<br>`2009/07/07(Tue)` | `5.04`<br>`2009/02/02(Mon)` |
-| `CHECKER` | `00.07.07`<br>`2009/07/23(Wed)` | `00.07.07`<br>`2009/07/23(Wed)` | `00.03.00`<br>`2008/12/16(Thu)` | `00.07.07`<br>`2009/07/23(Wed)` | `00.03.00`<br>`2008/12/16(Thu)` |
-| `DTC` | `00.09.00`<br>`Jul 5 2010` | `00.08.10`<br>`Apr 15 2010` | `00.05.01`<br>`2009/01/08(Thu)` | `00.09.00`<br>`Jul 5 2010` | `00.05.01`<br>`2009/01/08(Thu)` |
-| `KWP2000` | `00.09.04`<br>`Oct 08 2010` | `00.08.10`<br>`Apr 15 2010` | `00.06.02.00`<br>`2009/06/25(Thr)` | `00.09.04`<br>`Oct 08 2010` | `00.06.02.00`<br>`2009/06/25(Thr)` |
-| `ARBS-COMM` | `00.01.01`<br>`2008/11/18(Tue)` | `00.01.01`<br>`2008/11/18(Tue)` | `1.01`<br>`2008/11/18(Tue)` | `00.01.01`<br>`2008/11/18(Tue)` | `1.01`<br>`2008/11/18(Tue)` |
-| `IMMOBI` | `00.08.08`<br>`2010/02/26(Fri)` | `00.08.08`<br>`2010/02/26(Fri)` |  | `00.08.08`<br>`2010/02/26(Fri)` |  |
-| `SPOOFING` |  |  | `3.00`<br>`2008/10/27(MON)` |  | `3.00`<br>`2008/10/27(MON)` |
-| `DBKOM PJ` |  |  | `00.01.08`<br>`May 22 2014` |  | `00.01.08`<br>`May 22 2014` |
-| `DBKOM 12MY` | `00.02.05`<br>`Oct 8 2010` | `00.02.05`<br>`Jun 13 2011` |  | `00.02.05`<br>`Oct 8 2010` |  |
-| `CHG-CAN 12MY` | `00.02.01`<br>`Oct 8 2010` |  | `00.02.01`<br>`May 22 2014` | `00.02.01`<br>`Oct 8 2010` | `00.02.01`<br>`May 22 2014` |
-| `CHG-CAN EU` |  | `00.01.05`<br>`Apr 20 2010` |  |  |  |
+| Component | 9499B131 | 9499A43902 | 9499A18204 | 9499B13102 | 9499A18206 | 9486A069 |
+|---|---|---|---|---|---|---|
+| `std_s(GAIO)` | `V02.08`<br>`Nov 10 2009` | `V02.08`<br>`Nov 10 2009` | `xassv_LNG`<br>`Aug 2 2007` | `V02.08`<br>`Nov 10 2009` | `xassv_LNG`<br>`Aug 2 2007` | `V02.08`<br>`Nov 10 2009` |
+| `math_s(GAIO)` | `V02.08`<br>`Nov 10 2009` | `V02.08`<br>`Nov 10 2009` | `xassv_LNG`<br>`Aug 2 2007` | `V02.08`<br>`Nov 10 2009` | `xassv_LNG`<br>`Aug 2 2007` | `V02.08`<br>`Nov 10 2009` |
+| `cs(GAIO)` | `V01.01`<br>`Nov 10 2009` | `V01.01`<br>`Nov 10 2009` | `xassv_LNG`<br>`Aug 2 2007` | `V01.01`<br>`Nov 10 2009` | `xassv_LNG`<br>`Aug 2 2007` | `V01.01`<br>`Nov 10 2009` |
+| `ert(MATLAB)` | `2007a/7.4.0.287`<br>`Apr 15 2010` | `2007a/7.4.0.287`<br>`Apr 15 2010` |  | `2007a/7.4.0.287`<br>`Apr 15 2010` |  | `2007a/7.4.0.287`<br>`Apr 15 2010` |
+| `Can Reproggram` | `00.06.00`<br>`2009/02/10(Tue)` | `00.06.00`<br>`2009/02/10(Tue)` | `00.06.00.00`<br>`2009/02/10(Tue)` | `00.06.00`<br>`2009/02/10(Tue)` | `00.06.00.00`<br>`2009/02/10(Tue)` | `00.06.00`<br>`2009/02/10(Tue)` |
+| `BOOT` | `00.07.07`<br>`2009/08/03(Mon)` | `00.07.07`<br>`2009/08/03(Mon)` | `1.31`<br>`May 22 2014` | `00.07.07`<br>`2009/08/03(Mon)` | `1.31`<br>`May 22 2014` | `11.21`<br>`2016/04/28(Thu)` |
+| `BACKUP RAM` | `00.07.07`<br>`2009/08/03(Mon)` | `00.07.07`<br>`2009/08/03(Mon)` | `00.05.00`<br>`2009/01/08(Thu)` | `00.07.07`<br>`2009/08/03(Mon)` | `00.05.00`<br>`2009/01/08(Thu)` | `00.07.07`<br>`2009/08/03(Mon)` |
+| `EEPROM` | `00.08.11`<br>`2010/10/12(Tue)` | `00.08.11`<br>`2010/10/12(Tue)` | `5.03`<br>`2009/01/31(Sat)` | `00.08.11`<br>`2010/10/12(Tue)` | `5.03`<br>`2009/01/31(Sat)` | `00.08.11`<br>`2010/10/12(Tue)` |
+| `TASK ciNAFWH` | `00.01.30`<br>`2009/05/20(Wed)` | `00.01.30`<br>`2009/05/20(Wed)` | `1.30`<br>`May 22 2014` | `00.01.30`<br>`2009/05/20(Wed)` | `1.30`<br>`May 22 2014` | `00.01.30`<br>`2009/05/20(Wed)` |
+| `PORT` | `00.05.01`<br>`2009/01/29(Thu)` | `00.05.01`<br>`2009/01/29(Thu)` | `00.05.01`<br>`2009/01/29(Thu)` | `00.05.01`<br>`2009/01/29(Thu)` | `00.05.01`<br>`2009/01/29(Thu)` | `00.05.02`<br>`2013/06/13(Thu)` |
+| `RAM MONITOR` | `00.01.03`<br>`2008/12/04(Thu)` | `00.01.03`<br>`2008/12/04(Thu)` | `1.03`<br>`2008/12/04(Thu)` | `00.01.03`<br>`2008/12/04(Thu)` | `1.03`<br>`2008/12/04(Thu)` | `00.01.04`<br>`2013/06/13(Thu)` |
+| `Watch CPU` | `00.07.06`<br>`2009/07/07(Tue)` | `00.07.06`<br>`2009/07/07(Tue)` | `5.04`<br>`2009/02/02(Mon)` | `00.07.06`<br>`2009/07/07(Tue)` | `5.04`<br>`2009/02/02(Mon)` | `00.07.06`<br>`2009/07/07(Tue)` |
+| `CHECKER` | `00.07.07`<br>`2009/07/23(Wed)` | `00.07.07`<br>`2009/07/23(Wed)` | `00.03.00`<br>`2008/12/16(Thu)` | `00.07.07`<br>`2009/07/23(Wed)` | `00.03.00`<br>`2008/12/16(Thu)` | `00.07.08`<br>`2013/06/13(Thu)` |
+| `DTC` | `00.09.00`<br>`Jul 5 2010` | `00.08.10`<br>`Apr 15 2010` | `00.05.01`<br>`2009/01/08(Thu)` | `00.09.00`<br>`Jul 5 2010` | `00.05.01`<br>`2009/01/08(Thu)` | `00.01.01`<br>`Mar 22 2011` |
+| `KWP2000` | `00.09.04`<br>`Oct 08 2010` | `00.08.10`<br>`Apr 15 2010` | `00.06.02.00`<br>`2009/06/25(Thr)` | `00.09.04`<br>`Oct 08 2010` | `00.06.02.00`<br>`2009/06/25(Thr)` | `00.01.01`<br>`Mar 22 2011` |
+| `ARBS-COMM` | `00.01.01`<br>`2008/11/18(Tue)` | `00.01.01`<br>`2008/11/18(Tue)` | `1.01`<br>`2008/11/18(Tue)` | `00.01.01`<br>`2008/11/18(Tue)` | `1.01`<br>`2008/11/18(Tue)` | `00.01.01`<br>`2008/11/18(Tue)` |
+| `IMMOBI` | `00.08.08`<br>`2010/02/26(Fri)` | `00.08.08`<br>`2010/02/26(Fri)` |  | `00.08.08`<br>`2010/02/26(Fri)` |  | `00.08.08`<br>`2010/02/26(Fri)` |
+| `SPOOFING` |  |  | `3.00`<br>`2008/10/27(MON)` |  | `3.00`<br>`2008/10/27(MON)` |  |
+| `DBKOM PJ` |  |  | `00.01.08`<br>`May 22 2014` |  | `00.01.08`<br>`May 22 2014` |  |
+| `DBKOM 12MY` | `00.02.05`<br>`Oct 8 2010` | `00.02.05`<br>`Jun 13 2011` |  | `00.02.05`<br>`Oct 8 2010` |  |  |
+| `CHG-CAN 12MY` | `00.02.01`<br>`Oct 8 2010` |  | `00.02.01`<br>`May 22 2014` | `00.02.01`<br>`Oct 8 2010` | `00.02.01`<br>`May 22 2014` |  |
+| `CHG-CAN EU` |  | `00.01.05`<br>`Apr 20 2010` |  |  |  |  |
+| `DBKOM 17MY` |  |  |  |  |  | `00.11.19`<br>`Apr 28 2016` |
+| `CHG-CAN 17MY` |  |  |  |  |  | `00.02.01`<br>`Apr 28 2016` |
 
 ## Notes and caveats
 - `ecu_identification.txt` top-line timestamps are acquisition dates in 2026, not firmware build dates.
@@ -46,13 +49,23 @@ Using the initial consecutive 4-line component block in each ECU `strings.txt`, 
 - Timeline dates in this file now use the stricter standalone `MMM DD YYYY` line that is immediately followed by a standalone time line.
 - The Release Timeline `Notes` column is sourced from each ECU folder's `notes.txt`; if missing or empty, the table cell is left blank.
 
+## Boot Code Comparison
+
+The boot code is the first `0x8000` bytes of each ECU firmware binary.
+
+| Boot code SHA-256 (first `0x8000` bytes) | ECUs with matching boot code |
+|---|---|
+| `8614e7085c0dfa595321568d5ad270e1d3e8b748574a392109331af6d98d95ae` | `9499B131`, `9499A43902`, `9499B13102` |
+| `63877faf20cf92c2731f007119d16ad62c5b423b578ce7e00dd5bb68be3070bc` | `9499A18204`, `9499A18206` |
+| `e8f1ec54122d49b5dec4962c5d304fe70eb603025574e4fd1a6f22068a1349d5` | `9486A069` |
+
 ## Reproduction Method
 
 Use this process to regenerate this markdown file from the ECU folders.
 
 1. Enumerate each ECU subfolder and identify exactly one firmware `.bin` file plus `ecu_identification.txt`.
 2. Run `strings -n 8` against the chosen firmware binary in each ECU folder and save the result as `strings.txt` in that same folder.
-3. Read `strings.txt` and locate the single standalone date line in `MMM DD YYYY` format that is immediately followed by a standalone `HH:MM:SS` line.
+3. Run `strings -n 16 -tx $i | grep -E -i ' (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)'` to locate the headline date/time of the firmware build.
 4. Use that date line as the canonical timeline date for the folder.
 5. Read `ecu_identification.txt` and extract the software part number from `ECUCodeIdentification`.
 6. Read each ECU folder's `notes.txt` and map the content to that folder's software part number.
