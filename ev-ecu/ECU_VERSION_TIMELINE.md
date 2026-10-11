@@ -5,7 +5,7 @@
 | Timeline date | Software Part No | Primary firmware marker(s) | Notes |
 |---|---|---|---|
 | Dec 13 2010 | 9499B131 | `MAB_MMC_3F45E_EV_9.05a` |  |
-| May 12 2014 | 9499A43902 | `MAB_MMC_3F45E_EV_8.16a` | From a Citroen C-Zero 2011. Also verfied from a Mitsubishi |
+| May 12 2014 | 9499A43902 | `MAB_MMC_3F45E_EV_8.16a` | From a Citroen C-Zero 2011 |
 | May 27 2014 | 9499A18204 | `6.09a (20-May-2014)` |  |
 | May 27 2014 | 9499B13102 | `MAB_MMC_3F45E_EV_9.50a` (with `9.05.0018:20:01` also present) | An update to 9499B131 |
 | Oct 14 2015 | 9499A18206 | `6.09a (20-May-2014)` (same branch marker as A18204) | An update to 9499A108204 |
@@ -52,7 +52,7 @@ Use this process to regenerate this markdown file from the ECU folders.
 
 1. Enumerate each ECU subfolder and identify exactly one firmware `.bin` file plus `ecu_identification.txt`.
 2. Run `strings -n 8` against the chosen firmware binary in each ECU folder and save the result as `strings.txt` in that same folder.
-3. Read `strings.txt` and locate the single standalone date line in `MMM DD YYYY` format that is immediately followed by a standalone `HH:MM:SS` line.
+3. Run `strings -n 16 -tx $i | grep -E -i ' (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)'` to locate the headline date/time of the firmware build.
 4. Use that date line as the canonical timeline date for the folder.
 5. Read `ecu_identification.txt` and extract the software part number from `ECUCodeIdentification`.
 6. Read each ECU folder's `notes.txt` and map the content to that folder's software part number.

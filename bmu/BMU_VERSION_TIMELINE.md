@@ -7,33 +7,48 @@
 | May 10 2010 | 9499A84200 | `1.31 (02-Apr-2010)` | This was pulled from a Citroen C-Zero 2011. Software part number suggests an earlier revision to the 9499A84201 |
 | Jan 21 2011 | 9499B11500 | `3.02 (20-Oct-2010)` |  |
 | May 31 2011 | 9499A84201 | `3.02 (20-Oct-2010)` | The code in this is identical to 9499B11500, only the identifiers have changed. |
+| Sep 7 2011 | 9499B11600 | `3.05 (06-Sep-2011)` |  |
 | Jul 10 2014 | 9479A04300 | `8.21 (07-Jul-2014)` | From a late-model BMU embedded in battery pack, not under the rear seat; contains onboard earth leakage test hardware. |
+| Mar 9 2016 | 9479A14100 | `3.11 (19-Nov-2015)` |  From a 2017 EU C-Zero, 80 cell model |
 
 ## Component Matrix
 
 Using the initial consecutive 4-line component block in each BMU `strings.txt`, this matrix shows the component version string and component date at each component/BMU intersection.
 
-| Component | 9499A84200 | 9499B11500 | 9499A84201 | 9479A04300 |
-|---|---|---|---|---|
-| `BACKUP RAM` | `2.11`<br>`Apr 5 2010` | `2.11`<br>`Nov 10 2010` | `2.11`<br>`Nov 10 2010` | `2.11`<br>`Jul 10 2014` |
-| `BOOT` | `1.31`<br>`Apr 5 2010` | `1.31`<br>`Nov 10 2010` | `1.31`<br>`Nov 10 2010` | `1.31`<br>`Jul 10 2014` |
-| `BMU MONITOR` | `0.01`<br>`Apr 5 2010` | `0.01`<br>`Nov 10 2010` | `0.01`<br>`Nov 10 2010` | `1.00`<br>`Jul 10 2014` |
-| `CHECKER` | `1.10`<br>`Apr 5 2010` | `1.10`<br>`Nov 10 2010` | `1.10`<br>`Nov 10 2010` | `1.10`<br>`Jul 10 2014` |
-| `DTC` | `2.32`<br>`Apr 5 2010` | `2.32`<br>`Nov 10 2010` | `2.32`<br>`Nov 10 2010` | `2.32`<br>`Jul 10 2014` |
-| `EEPROM` | `4.02`<br>`Apr 5 2010` | `4.02`<br>`Nov 10 2010` | `4.02`<br>`Nov 10 2010` | `4.02`<br>`Jul 10 2014` |
-| `KWP2000` | `2.30`<br>`Apr 5 2010` | `2.30`<br>`Nov 10 2010` | `2.30`<br>`Nov 10 2010` | `2.31`<br>`Jul 10 2014` |
-| `PORT` | `2.00`<br>`Apr 5 2010` | `2.00`<br>`Nov 10 2010` | `2.00`<br>`Nov 10 2010` | `2.00`<br>`Jul 10 2014` |
-| `RAM MONITOR` | `1.01`<br>`Apr 5 2010` | `1.01`<br>`Nov 10 2010` | `1.01`<br>`Nov 10 2010` | `00.01.03`<br>`2008/12/04(Thu)` |
-| `TASK ciNAFWH` | `1.31`<br>`Apr 5 2010` | `1.31`<br>`Nov 10 2010` | `1.31`<br>`Nov 10 2010` | `1.31`<br>`Jul 10 2014` |
-| `Watch CPU` | `3.00`<br>`Apr 5 2010` | `3.00`<br>`Nov 10 2010` | `3.00`<br>`Nov 10 2010` | `3.00`<br>`Jul 10 2014` |
-| `std_s(GAIO)` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` |
-| `cs(GAIO)` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` |
-| `math_s(GAIO)` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` |
-| `DBKOM` |  |  |  | `00.04.04`<br>`Apr 3 2014` |
-| `DBKOM  11MY` | `00.01.00`<br>`Nov 10 2009` |  |  |  |
-| `DBKOM  12MY` |  | `00.01.00`<br>`Oct 19 2010` | `00.01.00`<br>`Oct 19 2010` |  |
-| `BAT-CAN LeakBMU` |  |  |  | `00.05.05`<br>`Jul 9 2014` |
-| `BAT-CAN  11MY` | `00.01.00`<br>`Nov 10 2009` | `00.01.00`<br>`Nov 10 2009` | `00.01.00`<br>`Nov 10 2009` |  |
+| Component | 9499A84200 | 9499B11500 | 9499A84201 | 9499B11600 | 9479A04300 | 9479A14100 |
+|---|---|---|---|---|---|---|
+| `BACKUP RAM` | `2.11`<br>`Apr 5 2010` | `2.11`<br>`Nov 10 2010` | `2.11`<br>`Nov 10 2010` | `2.11`<br>`Sep 7 2011` | `2.11`<br>`Jul 10 2014` | `2.11`<br>`Oct 13 2011` |
+| `BOOT` | `1.31`<br>`Apr 5 2010` | `1.31`<br>`Nov 10 2010` | `1.31`<br>`Nov 10 2010` | `1.31`<br>`Sep 7 2011` | `1.31`<br>`Jul 10 2014` | `1.31`<br>`Oct 13 2011` |
+| `BMU MONITOR` | `0.01`<br>`Apr 5 2010` | `0.01`<br>`Nov 10 2010` | `0.01`<br>`Nov 10 2010` | `0.01`<br>`Sep 7 2011` | `1.00`<br>`Jul 10 2014` | `0.01`<br>`Oct 13 2011` |
+| `CHECKER` | `1.10`<br>`Apr 5 2010` | `1.10`<br>`Nov 10 2010` | `1.10`<br>`Nov 10 2010` | `1.10`<br>`Sep 7 2011` | `1.10`<br>`Jul 10 2014` | `1.10`<br>`Oct 13 2011` |
+| `DTC` | `2.32`<br>`Apr 5 2010` | `2.32`<br>`Nov 10 2010` | `2.32`<br>`Nov 10 2010` | `2.32`<br>`Sep 7 2011` | `2.32`<br>`Jul 10 2014` | `2.32`<br>`Oct 13 2011` |
+| `EEPROM` | `4.02`<br>`Apr 5 2010` | `4.02`<br>`Nov 10 2010` | `4.02`<br>`Nov 10 2010` | `4.02`<br>`Sep 7 2011` | `4.02`<br>`Jul 10 2014` | `4.02`<br>`Oct 13 2011` |
+| `KWP2000` | `2.30`<br>`Apr 5 2010` | `2.30`<br>`Nov 10 2010` | `2.30`<br>`Nov 10 2010` | `2.30`<br>`Sep 7 2011` | `2.31`<br>`Jul 10 2014` | `2.30`<br>`Oct 13 2011` |
+| `PORT` | `2.00`<br>`Apr 5 2010` | `2.00`<br>`Nov 10 2010` | `2.00`<br>`Nov 10 2010` | `2.00`<br>`Sep 7 2011` | `2.00`<br>`Jul 10 2014` | `2.00`<br>`Oct 13 2011` |
+| `RAM MONITOR` | `1.01`<br>`Apr 5 2010` | `1.01`<br>`Nov 10 2010` | `1.01`<br>`Nov 10 2010` | `1.01`<br>`Sep 7 2011` | `00.01.03`<br>`2008/12/04(Thu)` | `1.01`<br>`Oct 13 2011` |
+| `TASK ciNAFWH` | `1.31`<br>`Apr 5 2010` | `1.31`<br>`Nov 10 2010` | `1.31`<br>`Nov 10 2010` | `1.31`<br>`Sep 7 2011` | `1.31`<br>`Jul 10 2014` | `1.31`<br>`Oct 13 2011` |
+| `Watch CPU` | `3.00`<br>`Apr 5 2010` | `3.00`<br>`Nov 10 2010` | `3.00`<br>`Nov 10 2010` | `3.00`<br>`Sep 7 2011` | `3.00`<br>`Jul 10 2014` | `3.00`<br>`Oct 13 2011` |
+| `std_s(GAIO)` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` |
+| `cs(GAIO)` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` |
+| `math_s(GAIO)` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` |
+| `DBKOM` |  |  |  |  | `00.04.04`<br>`Apr 3 2014` |  |
+| `DBKOM  11MY` | `00.01.00`<br>`Nov 10 2009` |  |  |  |  |  |
+| `DBKOM  12MY` |  | `00.01.00`<br>`Oct 19 2010` | `00.01.00`<br>`Oct 19 2010` | `00.02.00`<br>`Mar 4 2011` |  | `00.02.00`<br>`Mar 4 2011` |
+| `BAT-CAN LeakBMU` |  |  |  |  | `00.05.05`<br>`Jul 9 2014` |  |
+| `BAT-CAN  11MY` | `00.01.00`<br>`Nov 10 2009` | `00.01.00`<br>`Nov 10 2009` | `00.01.00`<br>`Nov 10 2009` | `00.01.00`<br>`Nov 10 2009` |  | `00.01.00`<br>`Nov 10 2009` |
+
+## Boot Code Comparison
+
+The table below compares the first `0x8000` bytes of each firmware binary. Binaries with the same hash have identical boot code.
+
+| Software Part No | First 0x8000-byte SHA-256 | Boot code group |
+|---|---|---|
+| 9499A84200 | `ed6319e10de270ec0c9df92b902bc41ef432f44e82971b15e5a132c368233a76` | Same as 9499B11500, 9499A84201, 9499B11600, 9479A14100 |
+| 9499B11500 | `ed6319e10de270ec0c9df92b902bc41ef432f44e82971b15e5a132c368233a76` | Same as 9499A84200, 9499A84201, 9499B11600, 9479A14100 |
+| 9499A84201 | `ed6319e10de270ec0c9df92b902bc41ef432f44e82971b15e5a132c368233a76` | Same as 9499A84200, 9499B11500, 9499B11600, 9479A14100 |
+| 9499B11600 | `ed6319e10de270ec0c9df92b902bc41ef432f44e82971b15e5a132c368233a76` | Same as 9499A84200, 9499B11500, 9499A84201, 9479A14100 |
+| 9479A14100 | `ed6319e10de270ec0c9df92b902bc41ef432f44e82971b15e5a132c368233a76` | Same as 9499A84200, 9499B11500, 9499A84201, 9499B11600 |
+| 9479A04300 | `378c170e0d0542bcc9fbee0238e1cd12a134f649a4dbab576b1e4d9d7257b44b` | Unique |
 
 ## Notes and caveats
 - `bmu_identification.txt` top-line timestamps are acquisition dates in 2026, not firmware build dates.
@@ -47,7 +62,7 @@ Use this process to regenerate this markdown file from the BMU folders.
 
 1. Enumerate each BMU subfolder and identify exactly one firmware `.bin` file plus `bmu_identification.txt`.
 2. Run `strings -n 8` against the chosen firmware binary in each BMU folder and save the result as `strings.txt` in that same folder.
-3. Read `strings.txt` and locate the single standalone date line in `MMM DD YYYY` format that is immediately followed by a standalone `HH:MM:SS` line.
+3. Run `strings -n 16 -tx $i | grep -E -i ' (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)'` to locate the headline date/time of the firmware build.
 4. Use that date line as the canonical timeline date for the folder.
 5. Read `bmu_identification.txt` and extract the software part number from `ECUCodeIdentification`.
 6. Read each BMU folder's `notes.txt` and map the content to that folder's software part number.
