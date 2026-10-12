@@ -88,6 +88,9 @@ communications on the ChaDeMo bus.
 See current EV-ECU CAN notes here:
 [EV-ECU CAN notes](can.md)
 
+Immobiliser handshake notes are documented here:
+[EV-ECU immobiliser notes](immobiliser.md)
+
 ## ECU Unit IO
 
 [Table of ECU pins](ecu-pins.md)
