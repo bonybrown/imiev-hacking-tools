@@ -9,10 +9,10 @@ need an appropriate XML definition file for each.
 In this repo are map files for:
 * [9499A18206 (EV-ECU 9499A182 software revision 06)](9499A18206.xml)
 * [9499A43902 (EV-ECU 9499A439 software revision 02)](9499A43902.xml)
-* [9499B115 (BMU 9499B155 initial revision)](9499B155.xml)
-* [9499A842 (BMU 9499B842 initial revision)](9499A842.xml)
+* [9499B11500 (BMU 9499B155 initial revision)](9499B15500.xml)
+* [9499A84201 (BMU 9499B842 initial revision)](9499A84201.xml)
 
-The `9499B115` and `9499A842` are effectively the same, there are no code changes between them, only version identifiers.
+The `9499B11500` and `9499A84201` files are effectively the same, there are no code changes between them, only version identifiers.
 
 Create an imiev folder in the `{Program Files}/OpenECU/EcuFlash/rommetadata/mitsubishi` folder and copy the above files there.
 

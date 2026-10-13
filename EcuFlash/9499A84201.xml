@@ -2,11 +2,11 @@
 	<romid>
 		<xmlid>393439393031000041383432</xmlid>
 		<internalidaddress>e53e4</internalidaddress>
-		<internalidhex>393439393031000041383432</internalidhex>
+		<internalidhex>3934393930310000413834323031</internalidhex>
 		<make>Mitsubishi</make>
 		<market>EDM</market>
 		<model>iMiev BMU</model>
-		<submodel>9499A842</submodel>
+		<submodel>9499A84200</submodel>
 		<transmission>Auto</transmission>
 		<year>2012</year>
 		<memmodel>M32186F8</memmodel>
