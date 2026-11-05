@@ -41,14 +41,10 @@ Using the initial consecutive 4-line component block in each BMU `strings.txt`, 
 
 The table below compares the first `0x8000` bytes of each firmware binary. Binaries with the same hash have identical boot code.
 
-| Software Part No | First 0x8000-byte SHA-256 | Boot code group |
+| Boot code group | First 0x8000-byte SHA-256 | Member BMUs |
 |---|---|---|
-| 9499A84200 | `ed6319e10de270ec0c9df92b902bc41ef432f44e82971b15e5a132c368233a76` | Same as 9499B11500, 9499A84201, 9499B11600, 9479A14100 |
-| 9499B11500 | `ed6319e10de270ec0c9df92b902bc41ef432f44e82971b15e5a132c368233a76` | Same as 9499A84200, 9499A84201, 9499B11600, 9479A14100 |
-| 9499A84201 | `ed6319e10de270ec0c9df92b902bc41ef432f44e82971b15e5a132c368233a76` | Same as 9499A84200, 9499B11500, 9499B11600, 9479A14100 |
-| 9499B11600 | `ed6319e10de270ec0c9df92b902bc41ef432f44e82971b15e5a132c368233a76` | Same as 9499A84200, 9499B11500, 9499A84201, 9479A14100 |
-| 9479A14100 | `ed6319e10de270ec0c9df92b902bc41ef432f44e82971b15e5a132c368233a76` | Same as 9499A84200, 9499B11500, 9499A84201, 9499B11600 |
-| 9479A04300 | `378c170e0d0542bcc9fbee0238e1cd12a134f649a4dbab576b1e4d9d7257b44b` | Unique |
+| Group 1 | `ed6319e10de270ec0c9df92b902bc41ef432f44e82971b15e5a132c368233a76` | 9499A84200, 9499B11500, 9499A84201, 9499B11600, 9479A14100 |
+| Group 2 | `378c170e0d0542bcc9fbee0238e1cd12a134f649a4dbab576b1e4d9d7257b44b` | 9479A04300 |
 
 ## Notes and caveats
 - `bmu_identification.txt` top-line timestamps are acquisition dates in 2026, not firmware build dates.

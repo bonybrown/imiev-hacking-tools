@@ -4,3 +4,5 @@ bin/
 dist/
 obj/
 *.csproj.lscache
+bmu/plots/_build
+ecu/plots/_build
