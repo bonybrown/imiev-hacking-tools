@@ -32,11 +32,11 @@
 
 	<table name="Pack Ah Limit (Ah) in SOC and capacity calcs" category="Capacity" address="e4414" type="1D" elements="1" scaling="AmpHours"/>
 
-	<table name="Pack Ah Capacity in factor to Ah calc" category="Capacity" address="e54a6" type="1D" elements="1" scaling="AmpHours_x10"/>
+	<table name="Pack Ah Capacity in factor to Ah calc" category="Capacity" address="e557c" type="1D" elements="1" scaling="AmpHours_x10"/>
 
-	<table name="Pack Ah Capacity Base value" category="Capacity" address="e54a6" type="1D" elements="1" scaling="AmpHours_x10"/>
+	<table name="Pack Ah Capacity Base value" category="Capacity" address="e557e" type="1D" elements="1" scaling="AmpHours_x10"/>
 
-	<table name="Pack Ah Capacity Clamp" category="Capacity" address="e54a6" type="1D" elements="1" scaling="AmpHours_x10"/>
+	<table name="Pack Ah Capacity Clamp" category="Capacity" address="e55ae" type="1D" elements="1" scaling="AmpHours_x10"/>
 
 	<table name="Cell Voltage from SOC" category="Battery" address="e5008" type="2D" elements="143" scaling="CellVolts">
 		<table name="SOC Input" address="e44b4" type="X Axis" elements="143" scaling="SOC"/>
