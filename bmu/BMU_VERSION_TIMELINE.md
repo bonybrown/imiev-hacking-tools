@@ -6,6 +6,7 @@
 |---|---|---|---|
 | May 10 2010 | 9499A84200 | `1.31 (02-Apr-2010)` | This was pulled from a Citroen C-Zero 2011. Software part number suggests an earlier revision to the 9499A84201 |
 | Jan 21 2011 | 9499B11500 | `3.02 (20-Oct-2010)` |  |
+| Feb 15 2011 | 9499B53000 | `3.02 (20-Oct-2010)` | Very close relative of 9499A84201, no code changes, only identifiers and some option changes. |
 | May 31 2011 | 9499A84201 | `3.02 (20-Oct-2010)` | The code in this is identical to 9499B11500, only the identifiers have changed. |
 | Sep 7 2011 | 9499B11600 | `3.05 (06-Sep-2011)` |  |
 | Jul 10 2014 | 9479A04300 | `8.21 (07-Jul-2014)` | From a late-model BMU embedded in battery pack, not under the rear seat; contains onboard earth leakage test hardware. |
@@ -15,27 +16,27 @@
 
 Using the initial consecutive 4-line component block in each BMU `strings.txt`, this matrix shows the component version string and component date at each component/BMU intersection.
 
-| Component | 9499A84200 | 9499B11500 | 9499A84201 | 9499B11600 | 9479A04300 | 9479A14100 |
-|---|---|---|---|---|---|---|
-| `BACKUP RAM` | `2.11`<br>`Apr 5 2010` | `2.11`<br>`Nov 10 2010` | `2.11`<br>`Nov 10 2010` | `2.11`<br>`Sep 7 2011` | `2.11`<br>`Jul 10 2014` | `2.11`<br>`Oct 13 2011` |
-| `BOOT` | `1.31`<br>`Apr 5 2010` | `1.31`<br>`Nov 10 2010` | `1.31`<br>`Nov 10 2010` | `1.31`<br>`Sep 7 2011` | `1.31`<br>`Jul 10 2014` | `1.31`<br>`Oct 13 2011` |
-| `BMU MONITOR` | `0.01`<br>`Apr 5 2010` | `0.01`<br>`Nov 10 2010` | `0.01`<br>`Nov 10 2010` | `0.01`<br>`Sep 7 2011` | `1.00`<br>`Jul 10 2014` | `0.01`<br>`Oct 13 2011` |
-| `CHECKER` | `1.10`<br>`Apr 5 2010` | `1.10`<br>`Nov 10 2010` | `1.10`<br>`Nov 10 2010` | `1.10`<br>`Sep 7 2011` | `1.10`<br>`Jul 10 2014` | `1.10`<br>`Oct 13 2011` |
-| `DTC` | `2.32`<br>`Apr 5 2010` | `2.32`<br>`Nov 10 2010` | `2.32`<br>`Nov 10 2010` | `2.32`<br>`Sep 7 2011` | `2.32`<br>`Jul 10 2014` | `2.32`<br>`Oct 13 2011` |
-| `EEPROM` | `4.02`<br>`Apr 5 2010` | `4.02`<br>`Nov 10 2010` | `4.02`<br>`Nov 10 2010` | `4.02`<br>`Sep 7 2011` | `4.02`<br>`Jul 10 2014` | `4.02`<br>`Oct 13 2011` |
-| `KWP2000` | `2.30`<br>`Apr 5 2010` | `2.30`<br>`Nov 10 2010` | `2.30`<br>`Nov 10 2010` | `2.30`<br>`Sep 7 2011` | `2.31`<br>`Jul 10 2014` | `2.30`<br>`Oct 13 2011` |
-| `PORT` | `2.00`<br>`Apr 5 2010` | `2.00`<br>`Nov 10 2010` | `2.00`<br>`Nov 10 2010` | `2.00`<br>`Sep 7 2011` | `2.00`<br>`Jul 10 2014` | `2.00`<br>`Oct 13 2011` |
-| `RAM MONITOR` | `1.01`<br>`Apr 5 2010` | `1.01`<br>`Nov 10 2010` | `1.01`<br>`Nov 10 2010` | `1.01`<br>`Sep 7 2011` | `00.01.03`<br>`2008/12/04(Thu)` | `1.01`<br>`Oct 13 2011` |
-| `TASK ciNAFWH` | `1.31`<br>`Apr 5 2010` | `1.31`<br>`Nov 10 2010` | `1.31`<br>`Nov 10 2010` | `1.31`<br>`Sep 7 2011` | `1.31`<br>`Jul 10 2014` | `1.31`<br>`Oct 13 2011` |
-| `Watch CPU` | `3.00`<br>`Apr 5 2010` | `3.00`<br>`Nov 10 2010` | `3.00`<br>`Nov 10 2010` | `3.00`<br>`Sep 7 2011` | `3.00`<br>`Jul 10 2014` | `3.00`<br>`Oct 13 2011` |
-| `std_s(GAIO)` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` |
-| `cs(GAIO)` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` |
-| `math_s(GAIO)` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` |
-| `DBKOM` |  |  |  |  | `00.04.04`<br>`Apr 3 2014` |  |
-| `DBKOM  11MY` | `00.01.00`<br>`Nov 10 2009` |  |  |  |  |  |
-| `DBKOM  12MY` |  | `00.01.00`<br>`Oct 19 2010` | `00.01.00`<br>`Oct 19 2010` | `00.02.00`<br>`Mar 4 2011` |  | `00.02.00`<br>`Mar 4 2011` |
-| `BAT-CAN LeakBMU` |  |  |  |  | `00.05.05`<br>`Jul 9 2014` |  |
-| `BAT-CAN  11MY` | `00.01.00`<br>`Nov 10 2009` | `00.01.00`<br>`Nov 10 2009` | `00.01.00`<br>`Nov 10 2009` | `00.01.00`<br>`Nov 10 2009` |  | `00.01.00`<br>`Nov 10 2009` |
+| Component | 9499A84200 | 9499B11500 | 9499B53000 | 9499A84201 | 9499B11600 | 9479A04300 | 9479A14100 |
+|---|---|---|---|---|---|---|---|
+| `BACKUP RAM` | `2.11`<br>`Apr 5 2010` | `2.11`<br>`Nov 10 2010` | `2.11`<br>`Nov 10 2010` | `2.11`<br>`Nov 10 2010` | `2.11`<br>`Sep 7 2011` | `2.11`<br>`Jul 10 2014` | `2.11`<br>`Oct 13 2011` |
+| `BOOT` | `1.31`<br>`Apr 5 2010` | `1.31`<br>`Nov 10 2010` | `1.31`<br>`Nov 10 2010` | `1.31`<br>`Nov 10 2010` | `1.31`<br>`Sep 7 2011` | `1.31`<br>`Jul 10 2014` | `1.31`<br>`Oct 13 2011` |
+| `BMU MONITOR` | `0.01`<br>`Apr 5 2010` | `0.01`<br>`Nov 10 2010` | `0.01`<br>`Nov 10 2010` | `0.01`<br>`Nov 10 2010` | `0.01`<br>`Sep 7 2011` | `1.00`<br>`Jul 10 2014` | `0.01`<br>`Oct 13 2011` |
+| `CHECKER` | `1.10`<br>`Apr 5 2010` | `1.10`<br>`Nov 10 2010` | `1.10`<br>`Nov 10 2010` | `1.10`<br>`Nov 10 2010` | `1.10`<br>`Sep 7 2011` | `1.10`<br>`Jul 10 2014` | `1.10`<br>`Oct 13 2011` |
+| `DTC` | `2.32`<br>`Apr 5 2010` | `2.32`<br>`Nov 10 2010` | `2.32`<br>`Nov 10 2010` | `2.32`<br>`Nov 10 2010` | `2.32`<br>`Sep 7 2011` | `2.32`<br>`Jul 10 2014` | `2.32`<br>`Oct 13 2011` |
+| `EEPROM` | `4.02`<br>`Apr 5 2010` | `4.02`<br>`Nov 10 2010` | `4.02`<br>`Nov 10 2010` | `4.02`<br>`Nov 10 2010` | `4.02`<br>`Sep 7 2011` | `4.02`<br>`Jul 10 2014` | `4.02`<br>`Oct 13 2011` |
+| `KWP2000` | `2.30`<br>`Apr 5 2010` | `2.30`<br>`Nov 10 2010` | `2.30`<br>`Nov 10 2010` | `2.30`<br>`Nov 10 2010` | `2.30`<br>`Sep 7 2011` | `2.31`<br>`Jul 10 2014` | `2.30`<br>`Oct 13 2011` |
+| `PORT` | `2.00`<br>`Apr 5 2010` | `2.00`<br>`Nov 10 2010` | `2.00`<br>`Nov 10 2010` | `2.00`<br>`Nov 10 2010` | `2.00`<br>`Sep 7 2011` | `2.00`<br>`Jul 10 2014` | `2.00`<br>`Oct 13 2011` |
+| `RAM MONITOR` | `1.01`<br>`Apr 5 2010` | `1.01`<br>`Nov 10 2010` | `1.01`<br>`Nov 10 2010` | `1.01`<br>`Nov 10 2010` | `1.01`<br>`Sep 7 2011` | `00.01.03`<br>`2008/12/04(Thu)` | `1.01`<br>`Oct 13 2011` |
+| `TASK ciNAFWH` | `1.31`<br>`Apr 5 2010` | `1.31`<br>`Nov 10 2010` | `1.31`<br>`Nov 10 2010` | `1.31`<br>`Nov 10 2010` | `1.31`<br>`Sep 7 2011` | `1.31`<br>`Jul 10 2014` | `1.31`<br>`Oct 13 2011` |
+| `Watch CPU` | `3.00`<br>`Apr 5 2010` | `3.00`<br>`Nov 10 2010` | `3.00`<br>`Nov 10 2010` | `3.00`<br>`Nov 10 2010` | `3.00`<br>`Sep 7 2011` | `3.00`<br>`Jul 10 2014` | `3.00`<br>`Oct 13 2011` |
+| `std_s(GAIO)` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` |
+| `cs(GAIO)` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` |
+| `math_s(GAIO)` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` | `xassv_LNG`<br>`Aug 2 2007` |
+| `DBKOM` |  |  |  |  |  | `00.04.04`<br>`Apr 3 2014` |  |
+| `DBKOM  11MY` | `00.01.00`<br>`Nov 10 2009` |  |  |  |  |  |  |
+| `DBKOM  12MY` |  | `00.01.00`<br>`Oct 19 2010` | `00.01.00`<br>`Oct 19 2010` | `00.01.00`<br>`Oct 19 2010` | `00.02.00`<br>`Mar 4 2011` |  | `00.02.00`<br>`Mar 4 2011` |
+| `BAT-CAN LeakBMU` |  |  |  |  |  | `00.05.05`<br>`Jul 9 2014` |  |
+| `BAT-CAN  11MY` | `00.01.00`<br>`Nov 10 2009` | `00.01.00`<br>`Nov 10 2009` | `00.01.00`<br>`Nov 10 2009` | `00.01.00`<br>`Nov 10 2009` | `00.01.00`<br>`Nov 10 2009` |  | `00.01.00`<br>`Nov 10 2009` |
 
 ## Boot Code Comparison
 
@@ -43,7 +44,7 @@ The table below compares the first `0x8000` bytes of each firmware binary. Binar
 
 | Boot code group | First 0x8000-byte SHA-256 | Member BMUs |
 |---|---|---|
-| Group 1 | `ed6319e10de270ec0c9df92b902bc41ef432f44e82971b15e5a132c368233a76` | 9499A84200, 9499B11500, 9499A84201, 9499B11600, 9479A14100 |
+| Group 1 | `ed6319e10de270ec0c9df92b902bc41ef432f44e82971b15e5a132c368233a76` | 9499A84200, 9499B11500, 9499B53000, 9499A84201, 9499B11600, 9479A14100 |
 | Group 2 | `378c170e0d0542bcc9fbee0238e1cd12a134f649a4dbab576b1e4d9d7257b44b` | 9479A04300 |
 
 ## Notes and caveats
